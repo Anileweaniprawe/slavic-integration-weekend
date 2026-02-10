@@ -951,14 +951,14 @@ body {
     /* Odstęp (96px) */
     align-items: center;
     /* Wyrównaj w pionie */
-    max-width: 1000px;
+    max-width: 1200px;
     /* Maksymalna szerokość */
     margin: 0 auto;
     /* Wyśrodkowanie */
 }
 
 .organizer-image {
-    width: 300px;
+    width: 500px;
     /* Szerokość */
     height: 300px;
     /* Wysokość - kwadrat */
