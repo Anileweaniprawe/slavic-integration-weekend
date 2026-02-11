@@ -43,7 +43,14 @@
 
     /* Typography (Czcionki) */
     --font-primary: 'Lato', sans-serif;
-    /* Główna czcionka strony */
+    --font-header: 'Bebas Neue', sans-serif;
+    /* Nowy font nagłówkowy */
+
+    /* Slavic Colors */
+    --slavic-orange: #F39200;
+    --slavic-blue: #2E3192;
+    --color-cream: #FFF7EB;
+    /* Bardzo jasny pomarańcz na tło */
 
     /* Generous Spacing (Odstępy - hojne jak w nowoczesnych designach) */
     --spacing-xs: 0.5rem;
@@ -276,8 +283,8 @@ body {
     /* Pełna szerokość */
     height: 100%;
     /* Pełna wysokość */
-    background-image: url('marzec - 2025 (IMG_4650).jpg');
-    /* Twoje zdjęcie grupowe! */
+    background: var(--color-cream);
+    /* Jasny pomarańczowy z plakatu */
     background-size: cover;
     /* Rozciągnij zdjęcie aby pokryło cały obszar */
     background-position: center;
@@ -301,8 +308,8 @@ body {
     /* Pełna szerokość */
     height: 100%;
     /* Pełna wysokość */
-    background: linear-gradient(135deg, rgba(46, 49, 146, 0.85) 0%, rgba(0, 174, 239, 0.75) 100%);
-    /* Niebieski gradient z przezroczystością - przyciemnia zdjęcie */
+    background: none;
+    /* Usunięto gradient - czyste tło */
     z-index: 1;
     /* Nad zdjęciem, pod tekstem */
 }
@@ -349,22 +356,30 @@ body {
 }
 
 .hero-title {
-    font-size: clamp(2rem, 6vw, 4rem);
-    /* Responsywny rozmiar: min 2rem (32px), preferowane 6% viewport width, max 4rem (64px) */
-    font-weight: 900;
-    /* Maksymalne pogrubienie (black) */
-    line-height: 1.1;
-    /* Ciasny odstęp między liniami (110%) */
+    font-family: var(--font-header);
+    /* Bebas Neue z plakatu */
+    font-size: clamp(3rem, 8vw, 6rem);
+    /* Większy rozmiar */
+    font-weight: 400;
+    /* Bebas jest bold z natury */
+    line-height: 0.9;
     margin: 0;
-    /* Bez marginesu */
-    letter-spacing: -1px;
-    /* Zbliżone litery (tighter) */
-    color: var(--color-white);
-    /* Biały */
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    /* Cień tekstu dla lepszej czytelności na zdjęciu */
+    letter-spacing: 1px;
+    color: var(--slavic-blue);
+    /* Domyślny, ale nadpisany przez span */
+    text-shadow: none;
+    /* Czysty tekst */
     text-transform: uppercase;
-    /* WIELKIE LITERY */
+}
+
+.text-orange {
+    color: var(--slavic-orange);
+    display: block;
+}
+
+.text-blue {
+    color: var(--slavic-blue);
+    display: block;
 }
 
 .title-line {
@@ -484,20 +499,16 @@ body {
 }
 
 .section-title {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    /* Responsywny: min 1.8rem, preferowane 4vw, max 2.5rem - mniejszy */
-    font-weight: 700;
-    /* Bold (nie black) */
-    margin-bottom: var(--spacing-xl);
-    /* Więcej miejsca pod nagłówkiem (96px) */
-    color: var(--color-black);
-    /* Czarny */
-    letter-spacing: 0px;
-    /* Normalne odstępy między literami */
-    line-height: 1.2;
-    /* Odstęp między liniami */
+    font-family: var(--font-header);
+    /* Font z plakatu (Bebas Neue) */
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--slavic-blue);
+    /* Kolor niebieski z plakatu */
     text-transform: uppercase;
-    /* WIELKIE LITERY */
+    letter-spacing: 1px;
+    text-align: center;
+    margin-bottom: 0 !important;
 }
 
 .title-underline {
@@ -730,8 +741,8 @@ body {
    Registration Section (Sekcja zapisów)
    ======================================== */
 .registration-section {
-    padding: var(--spacing-xxxl) 0;
-    /* Padding: 160px góra/dół */
+    padding: 60px 0;
+    /* Padding: 60px góra/dół (zmniejszone z 160px) */
     background: var(--color-white);
     /* Białe tło */
 }
@@ -816,8 +827,8 @@ body {
    Previous Edition Section (Sekcja poprzedniej edycji)
    ======================================== */
 .previous-edition-section {
-    padding: var(--spacing-xxxl) 0;
-    /* Padding: 160px góra/dół */
+    padding: 60px 0;
+    /* Padding: 60px góra/dół (zmniejszone z 160px) */
     background: var(--color-gray-light);
     /* Jasnoszare tło */
 }
@@ -936,8 +947,8 @@ body {
    Organizers Section (Sekcja organizatorów)
    ======================================== */
 .organizers-section {
-    padding: var(--spacing-xxxl) 0;
-    /* Padding: 160px góra/dół */
+    padding: 60px 0;
+    /* Padding: 60px góra/dół (zmniejszone z 160px) */
     background: var(--color-white);
     /* Białe tło */
 }
@@ -1019,8 +1030,8 @@ body {
    Partners Section (Sekcja partnerów)
    ======================================== */
 .partners-section {
-    padding: var(--spacing-xxxl) 0;
-    /* Padding: 160px góra/dół */
+    padding: 60px 0;
+    /* Padding: 60px góra/dół (zmniejszone z 160px) */
     background: var(--color-white);
     /* Białe tło */
 }
