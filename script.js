@@ -300,3 +300,35 @@ sliderDots.forEach((dot, index) => {
 
 // Auto-play (zmiana co 5 sekund)
 setInterval(nextSlide, 5000);
+
+// ========================================
+// Folders & Lightbox
+// ========================================
+function toggleFolder(folder) {
+    // Zamknij inne foldery (opcjonalnie, jeśli chcemy tylko jeden otwarty)
+    // const folders = document.querySelectorAll('.folder');
+    // folders.forEach(f => {
+    //    if (f !== folder) f.classList.remove('open');
+    // });
+    
+    folder.classList.toggle('open');
+}
+
+function openLightbox(src) {
+    const lightbox = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
+    img.src = src;
+    lightbox.style.display = 'flex';
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.style.display = 'none';
+}
+
+// Close lightbox on Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+        closeLightbox();
+    }
+});

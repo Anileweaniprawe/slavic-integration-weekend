@@ -43,7 +43,7 @@
 
     /* Typography (Czcionki) */
     --font-primary: 'Lato', sans-serif;
-    --font-header: 'Bebas Neue', sans-serif;
+    --font-header: 'Oswald', sans-serif;
     /* Nowy font nagłówkowy */
 
     /* Slavic Colors */
@@ -51,6 +51,13 @@
     --slavic-blue: #2E3192;
     --color-cream: #FFF7EB;
     /* Bardzo jasny pomarańcz na tło */
+
+    /* Folder Colors */
+    --folder-color: #70a1ff;
+    --folder-back-color: #4785ff;
+    --paper-1: #e6e6e6;
+    --paper-2: #f2f2f2;
+    --paper-3: #ffffff;
 
     /* Generous Spacing (Odstępy - hojne jak w nowoczesnych designach) */
     --spacing-xs: 0.5rem;
@@ -517,15 +524,14 @@ body {
    Section Styles - Generous Spacing (Style sekcji - duże odstępy)
    ======================================== */
 .section-header {
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
     /* Odstęp pod nagłówkiem (96px) */
 }
 
 .section-title {
     font-family: var(--font-header);
-    /* Font z plakatu (Bebas Neue) */
-    font-size: 2.5rem;
-    font-weight: 400;
+    font-size: 3rem;
+    font-weight: 500;
     color: var(--slavic-blue);
     /* Kolor niebieski z plakatu */
     text-transform: uppercase;
@@ -536,7 +542,6 @@ body {
 
 .title-underline {
     display: none;
-    /* Ukryj podkreślenie - nie używamy go w stylu MLSS */
 }
 
 .section-description {
@@ -554,7 +559,7 @@ body {
    About Section - Split Layout (Sekcja "O nas" - podzielony układ)
    ======================================== */
 .about-section {
-    padding: var(--spacing-lg) 0;
+    padding: var(--spacing-md) 0;
     /* Padding: 64px góra/dół (zmniejszone dla mniejszych odstępów), 0 lewo/prawo */
     background: var(--color-white);
     /* Białe tło */
@@ -563,18 +568,17 @@ body {
 }
 
 .about-content {
-    display: grid;
-    /* CSS Grid layout */
-    grid-template-columns: 45% 55%;
-    /* Dwie kolumny: zdjęcie 45%, tekst 55% */
-    gap: var(--spacing-xl);
-    /* Odstęp między kolumnami (96px) */
+    display: flex;
+    flex-direction: column;
+    /* Elementy jeden pod drugim */
+    gap: var(--spacing-md);
+    /* Odstęp między sliderem a tekstem (64px) */
     align-items: center;
-    /* Wyrównaj w pionie do środka */
-    padding: 0 var(--spacing-lg);
-    /* Padding po bokach (64px) */
-    max-width: 1400px;
-    /* Maksymalna szerokość */
+    /* Wyśrodkuj elementy */
+    padding: 0 var(--spacing-md);
+    /* Mniejszy padding boczny */
+    max-width: 1000px;
+    /* Zmniejszona szerokość kontenera dla lepszej czytelności tekstu */
     margin: 0 auto;
     /* Wyśrodkowanie */
 }
@@ -591,8 +595,12 @@ body {
 }
 
 .about-text {
-    padding: var(--spacing-lg);
-    /* Padding wokół tekstu (64px) */
+    padding: 0;
+    /* Usunięto zbędny padding w układzie kolumnowym */
+    text-align: justify;
+    /* Wyjustowany tekst */
+    text-align-last: center;
+    /* Ostatnia linia wyśrodkowana (opcjonalnie, dla lepszego wyglądu akapitów) */
 }
 
 .about-text::before {
@@ -644,9 +652,9 @@ body {
     /* CSS Grid - 3 kolumny obok siebie */
     grid-template-columns: repeat(3, 1fr);
     /* 3 równe kolumny */
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md);
     /* Odstęp między kartami (64px) */
-    margin-top: var(--spacing-xl);
+    margin-top: var(--spacing-md);
     /* Odstęp nad gridem (96px) */
 }
 
@@ -663,7 +671,7 @@ body {
     /* Wyśrodkuj w poziomie */
     text-align: center;
     /* Wyśrodkuj tekst */
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md);
     /* Większy odstęp między ikoną a tekstem (64px) */
     transition: all var(--transition-medium);
     /* Płynne animacje */
@@ -685,30 +693,7 @@ body {
     /* Bez ruchu przy hover */
 }
 
-.detail-icon {
-    width: 120px;
-    /* Szerokość kontenera ikony - większa */
-    height: 120px;
-    /* Wysokość kontenera ikony - większa */
-    margin: 0;
-    /* Bez marginesu */
-    background: transparent;
-    /* Przezroczyste tło */
-    border: none;
-    /* Bez borderu */
-    border-radius: 0;
-    /* Bez zaokrąglenia */
-    display: flex;
-    /* Flexbox do centrowania ikony SVG */
-    align-items: center;
-    /* Wyśrodkuj w pionie */
-    justify-content: center;
-    /* Wyśrodkuj w poziomie */
-    color: var(--color-blue);
-    /* Niebieski kolor ikony */
-    transition: all var(--transition-medium);
-    /* Płynne animacje */
-}
+
 
 .detail-card:nth-child(2) .detail-icon {
     color: var(--color-cyan);
@@ -739,8 +724,8 @@ body {
     /* Pogrubienie */
     margin-bottom: 0.5rem;
     /* Odstęp pod tytułem */
-    color: var(--color-black);
-    /* Czarny */
+    color: var(--slavic-blue);
+    /* Ciemny niebieski */
     text-transform: uppercase;
     /* WIELKIE LITERY */
     letter-spacing: 0.5px;
@@ -749,7 +734,7 @@ body {
 
 .tbc {
     font-size: 1.1rem;
-    /* Rozmiar tekstu "To be confirmed" */
+    /* Rozmiar tekstu "Soon announced" */
     color: #999;
     /* Szary kolor */
     font-style: italic;
@@ -786,12 +771,11 @@ body {
 .registration-status {
     text-align: center;
     /* Wyśrodkuj tekst */
-    padding: var(--spacing-xl);
+    padding: var(--spacing-md);
     /* Padding wokół (96px) */
     background: var(--color-gray-light);
     /* Jasnoszare tło */
-    border-left: 4px solid var(--color-blue);
-    /* Lewy akcent niebieski */
+
 }
 
 .registration-status h3 {
@@ -1621,4 +1605,351 @@ body {
         opacity: 1;
         /* Pełna widoczność */
     }
+}
+
+/* ========================================
+   Folder Component
+   ======================================== */
+.folders-container {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    /* Większe odstępy między folderami */
+    margin-top: var(--spacing-xl);
+    /* Obniżenie folderów - większy odstęp od tekstu wyżej */
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.folder-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    /* Odstęp między folderem a podpisem */
+}
+
+.folder-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    /* Mniejsza czcionka niż tekst (zwykle 1rem) */
+    font-weight: 700;
+    /* Pogrubiona */
+    color: var(--slavic-blue);
+    /* Ciemny niebieski ESN */
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+
+.folder {
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+    width: 100px;
+    /* Dodane dla layoutu */
+    height: 80px;
+    /* Dodane dla layoutu */
+    position: relative;
+    /* Ważne */
+}
+
+.folder:not(.folder--click):hover {
+    transform: translateY(-8px);
+}
+
+.folder:not(.folder--click):hover .paper {
+    transform: translate(-50%, 0%);
+}
+
+.folder:not(.folder--click):hover .folder__front {
+    transform: skew(15deg) scaleY(0.6);
+}
+
+.folder:not(.folder--click):hover .right {
+    transform: skew(-15deg) scaleY(0.6);
+}
+
+.folder.open {
+    transform: translateY(-8px);
+}
+
+.folder.open .paper:nth-child(1) {
+    transform: translate(-120%, -70%) rotateZ(-15deg);
+}
+
+.folder.open .paper:nth-child(1):hover {
+    transform: translate(-120%, -70%) rotateZ(-15deg) scale(1.1);
+}
+
+.folder.open .paper:nth-child(2) {
+    transform: translate(10%, -70%) rotateZ(15deg);
+    height: 80%;
+}
+
+.folder.open .paper:nth-child(2):hover {
+    transform: translate(10%, -70%) rotateZ(15deg) scale(1.1);
+}
+
+.folder.open .paper:nth-child(3) {
+    transform: translate(-50%, -100%) rotateZ(5deg);
+    height: 80%;
+}
+
+.folder.open .paper:nth-child(3):hover {
+    transform: translate(-50%, -100%) rotateZ(5deg) scale(1.1);
+}
+
+.folder.open .folder__front {
+    transform: skew(15deg) scaleY(0.6);
+}
+
+.folder.open .right {
+    transform: skew(-15deg) scaleY(0.6);
+}
+
+.folder__back {
+    position: relative;
+    width: 100px;
+    height: 80px;
+    background: var(--folder-back-color);
+    border-radius: 0px 10px 10px 10px;
+}
+
+.folder__back::after {
+    position: absolute;
+    z-index: 0;
+    bottom: 98%;
+    left: 0;
+    content: '';
+    width: 30px;
+    height: 10px;
+    background: var(--folder-back-color);
+    border-radius: 5px 5px 0 0;
+}
+
+.paper {
+    position: absolute;
+    z-index: 2;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, 10%);
+    width: 70%;
+    height: 80%;
+    background: var(--paper-1);
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.paper:nth-child(2) {
+    background: var(--paper-2);
+    width: 80%;
+    height: 70%;
+}
+
+.paper:nth-child(3) {
+    background: var(--paper-3);
+    width: 90%;
+    height: 60%;
+}
+
+.folder__front {
+    position: absolute;
+    z-index: 5;
+    /* Wyższy niż paper */
+    width: 100%;
+    height: 100%;
+    background: var(--folder-color);
+    border-radius: 5px 10px 10px 10px;
+    transform-origin: bottom;
+    transition: all 0.3s ease-in-out;
+}
+
+.right {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    background: var(--folder-color);
+    border-radius: 5px 10px 10px 10px;
+    transform-origin: bottom;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Lightbox Styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+.folder-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: zoom-in;
+}
+
+.right {
+    /* Dodana klasa 'right' dla transformacji frontu, jeśli potrzebna */
+    /* Użytkownik wspomniał o .right w hover, ale nie w definicji. */
+    /* Zakładam, że .folder__front może mieć klasę .right lub to oddzielny element? */
+    /* Zostawiam puste, bo w HTML dodam klasę 'right' do frontu jeśli potrzeba? */
+    /* W CSS: .folder:not(.folder--click):hover .right */
+    /* Wygląda na to, że 'right' to może być po prostu folder__front, ale transformuje się inaczej? */
+    /* Użytkownik dał: .folder:not(.folder--click):hover .folder__front ORAZ .right. */
+    /* Zinterpretuję to tak: dodam też element .right w HTML jako kopię frontu albo cień? */
+    /* Ale w CSS: .folder.open .folder__front i .folder.open .right mają te same transformacje (skew -15 vs 15). */
+    /* Więc chyba folder ma dwie części frontu? Lewą i prawą? */
+    /* Ale folder__front ma width 100%. */
+    /* Podejrzewam, że to animacja otwierania "skrzydeł". */
+    /* Dodam w HTML element <div class="folder__front right"></div> obok zwykłego frontu. */
+}
+
+.folder__front.right {
+    /* Jeśli right ma inne właściwości startowe? */
+    /* Bazując na CSS użytkownika, .right tylko transformuje się inaczej. */
+    z-index: 4;
+    /* Może wyżej? */
+    opacity: 0;
+    /* Ukryte domyślnie? */
+    /* Nie, użytkownik nie dał opacity. */
+    /* Może to literówka w CSS użytkownika? */
+    /* "scaleY(0.6)" sugeruje pochylenie. */
+    /* Skoro nie mam pewności co to .right, pominę to w HTML chyba że to kluczowe. */
+    /* Ale transformacje są różne (15deg vs -15deg). */
+    /* Może folder otwiera się jak książka? */
+    /* Dodam <div class="right"></div> w HTML na wszelki wypadek, z klasą folder__front też? */
+    /* Nie, .right to oddzielna klasa w selektorze. */
+}
+
+/* ========================================
+   Split Section (Details + Registration)
+   ======================================== */
+.split-sections-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    /* Details szersze */
+    gap: var(--spacing-xl);
+    align-items: stretch;
+    /* Rozciągnij kolumny do równej wysokości */
+    position: relative;
+}
+
+/* Ozdobna linia oddzielająca (border na lewej kolumnie) */
+.details-part {
+    border-right: 2px solid rgba(0, 0, 0, 0.05);
+    /* Delikatna linia */
+    padding-right: var(--spacing-xl);
+    /* Odstęp od linii */
+}
+
+.registration-part {
+    display: flex;
+    flex-direction: column;
+    padding-left: var(--spacing-md);
+}
+
+/* Na mniejszych ekranach jeden pod drugim */
+@media (max-width: 900px) {
+    .split-sections-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .details-part {
+        border-right: none;
+        padding-right: 0;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+        padding-bottom: var(--spacing-lg);
+    }
+
+    .registration-part {
+        padding-left: 0;
+    }
+}
+
+/* Wewnątrz kolumny Details */
+.split-sections-grid .details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Dwie kolumny wewnątrz details (jak było wcześniej w details-grid) */
+    gap: var(--spacing-lg);
+}
+
+@media (max-width: 600px) {
+    .split-sections-grid .details-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+.split-sections-grid .section-header {
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+    /* Tytuły wyśrodkowane w swoich kolumnach */
+}
+
+.split-sections-grid .section-title {
+    font-size: 2.5rem;
+    color: var(--slavic-blue);
+}
+
+/* Registration Box - Ładniejszy wygląd */
+.registration-content {
+    background: #f8f9fa;
+    /* Bardzo jasny szary */
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: var(--spacing-xl);
+    flex-grow: 1;
+    /* Wypełnij wysokość */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    min-height: 300px;
+}
+
+.registration-status h3 {
+    margin-bottom: 0.5rem;
+    font-family: var(--font-header);
+    color: var(--slavic-orange);
+    font-size: 2rem;
+}
+
+/* Ukrywamy pusty padding w registration-column jeśli był */
+.registration-column {
+    padding: 0;
 }

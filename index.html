@@ -30,7 +30,7 @@
                 <span></span>
             </div>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link active">HOME</a></li>
+                <li><a href="#home" class="nav-link active">ABOUT</a></li>
                 <li><a href="#details" class="nav-link">DETAILS</a></li>
                 <li><a href="#registration" class="nav-link">REGISTRATION</a></li>
                 <li><a href="#partners" class="nav-link">PARTNERS</a></li>
@@ -88,209 +88,200 @@
     <section class="about-section">
         <div class="container">
             <div class="about-content">
-                <!-- Image Slider (Left) -->
-                <div class="about-slider">
-                    <div class="slider-container">
-                        <div class="slider-images" id="sliderImages">
-                            <img src="iw3.jpg" alt="Integration Weekend Photo 1" class="slider-image active">
-                            <img src="iw4.jpg" alt="Integration Weekend Photo 2" class="slider-image">
-                            <img src="iw5.jpg" alt="Integration Weekend Photo 3" class="slider-image">
-                            <img src="iw6.jpg" alt="Integration Weekend Photo 4" class="slider-image">
-                        </div>
-                        <button class="slider-btn slider-btn-prev" id="sliderPrev">‹</button>
-                        <button class="slider-btn slider-btn-next" id="sliderNext">›</button>
-                        <div class="slider-dots" id="sliderDots">
-                            <span class="slider-dot active" data-index="0"></span>
-                            <span class="slider-dot" data-index="1"></span>
-                            <span class="slider-dot" data-index="2"></span>
-                            <span class="slider-dot" data-index="3"></span>
-                        </div>
-                    </div>
+                <!-- Title -->
+                <h2 class="section-title">WHAT IS INTEGRATION WEEKEND?</h2>
+
+                <!-- Text Content -->
+                <div class="about-text">
+                    <p class="lead-text">
+                        Integration Weekend is a three-day trip where your Erasmus really begins.
+                    </p>
+                    <p>
+                        We’ve been organising Integration Weekends since 2010 - and this year’s
+                        Slavic edition is our 29th. Over the years, we’ve welcomed
+                        hundreds
+                        of international students and helped them start their semester in the best possible way!
+                    </p>
+                    <p>
+                        It’s all about meeting new people, building friendships and feeling part of an international
+                        community from the beginning of your Erasmus. Through team activities, creative workshops,
+                        themed
+                        moments and a lot of shared laughs, you’ll connect with students from all over the world in a
+                        relaxed and welcoming atmosphere.
+                    </p>
+                    <p>
+                        This time, we’ll let you discover our Slavic roots,
+                        challenge a
+                        few
+                        stereotypes and show you what Poland is really about.
+                    </p>
                 </div>
 
-                <!-- Text Content (Right) -->
-                <div class="about-text">
-                    <h2 class="section-title">WHAT IS SLAVIC INTEGRATION WEEKEND?</h2>
-                    <p class="lead-text">
-                        Slavic Integration Weekend is an exceptional event that brings together people from different
-                        Slavic
-                        cultures in an atmosphere of friendship, cultural exchange, and shared fun.
-                    </p>
-                    <p>
-                        During the weekend, participants will have the opportunity to meet new people, exchange cultural
-                        experiences, and participate in various integration activities. It's a perfect opportunity to
-                        build
-                        international friendships and broaden your horizons.
-                    </p>
-                    <p>
-                        Our program includes both intensive integration time and moments of relaxation in beautiful
-                        surroundings. Workshops, team games, cultural evenings, and much more await you!
-                    </p>
+                <!-- Folders Container (Moved to bottom) -->
+                <div class="folder-label" style="color: #2e3192; margin-top: 3rem; margin-bottom: 2rem; width: 100%;">
+                    RECENT PREVIOUS EDITIONS:</div>
+                <div class="folders-container" style="margin-top: 0;">
+                    <!-- Folder 1 + Label -->
+                    <div class="folder-wrapper">
+                        <div class="folder" onclick="toggleFolder(this)">
+                            <div class="folder__back">
+                                <div class="paper"><img src="sh1.jpg" class="folder-img" alt="Photo 1"
+                                        onclick="openLightbox(this.src); event.stopPropagation();"></div>
+                                <div class="paper"><img src="sh2.jpg" class="folder-img" alt="Photo 2"
+                                        onclick="openLightbox(this.src); event.stopPropagation();"></div>
+                                <div class="paper"><img src="sh3.jpg" class="folder-img" alt="Photo 3"
+                                        onclick="openLightbox(this.src); event.stopPropagation();"></div>
+                                <div class="folder__front"></div>
+                                <div class="folder__front right"></div>
+                            </div>
+                        </div>
+                        <div class="folder-label" style="color: #7ac143;">SHREK</div>
+                    </div>
+
+                    <!-- Folder 2 + Label -->
+                    <div class="folder-wrapper">
+                        <div class="folder" onclick="toggleFolder(this)">
+                            <div class="folder__back">
+                                <div class="paper"><img src="od1.jpg" class="folder-img" alt="Photo 4"
+                                        onclick="openLightbox(this.src); event.stopPropagation();"></div>
+                                <div class="paper"><img src="od2.jpg" class="folder-img" alt="Photo 5"
+                                        onclick="openLightbox(this.src); event.stopPropagation();"></div>
+                                <div class="paper"><img src="od3.jpg" class="folder-img" alt="Photo 6"
+                                        onclick="openLightbox(this.src); event.stopPropagation();"></div>
+                                <div class="folder__front"></div>
+                                <div class="folder__front right"></div>
+                            </div>
+                        </div>
+                        <div class="folder-label" style="color: #00aeef;">ODDYSEY</div>
+                    </div>
+
+                    <!-- Folder 3 + Label -->
+                    <div class="folder-wrapper">
+                        <div class="folder" onclick="toggleFolder(this)">
+                            <div class="folder__back">
+                                <div class="paper"><img src="er1.jpg" class="folder-img" alt="Photo 7"
+                                        onclick="openLightbox(this.src); event.stopPropagation();"></div>
+                                <div class="paper"><img src="er3.jpg" class="folder-img" alt="Photo 8"
+                                        onclick="openLightbox(this.src); event.stopPropagation();"></div>
+                                <div class="paper"><img src="ew2.jpg" class="folder-img" alt="Photo 9"
+                                        onclick="openLightbox(this.src); event.stopPropagation();"></div>
+                                <div class="folder__front"></div>
+                                <div class="folder__front right"></div>
+                            </div>
+                        </div>
+                        <div class="folder-label" style="color: #ec008c;">ERASMUSLAND</div>
+                    </div>
                 </div>
+            </div>
+
+            <!-- Lightbox Modal -->
+            <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+                <span class="close-lightbox">&times;</span>
+                <img class="lightbox-content" id="lightbox-img">
             </div>
         </div>
     </section>
 
-    <!-- Details Section -->
+    <!-- Details & Registration Split Section -->
     <section id="details" class="details-section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">EVENT DETAILS</h2>
-            </div>
+            <div class="split-sections-grid">
 
-            <div class="details-grid">
-                <!-- Left Column: Location + Date -->
-                <div class="details-column">
-                    <div class="detail-card">
-                        <div class="detail-icon">
-                            <svg width="60" height="60" viewBox="0 0 48 48" fill="none">
-                                <path d="M24 2L6 14V28C6 37.9 14.1 46 24 46C33.9 46 42 37.9 42 28V14L24 2Z"
-                                    stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                                <path d="M24 24L18 20V28L24 32L30 28V20L24 24Z" stroke="currentColor" stroke-width="3"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                        <div class="detail-content">
-                            <h3>Location</h3>
-                            <p>Marysienka Resort</p>
-                            <p class="location-detail">Topornia 23</p>
-                        </div>
+                <!-- Left Column: Event Details -->
+                <div class="split-column details-part">
+                    <div class="section-header">
+                        <h2 class="section-title">EVENT DETAILS</h2>
                     </div>
 
-                    <div class="detail-card">
-                        <div class="detail-icon">
-                            <svg width="60" height="60" viewBox="0 0 48 48" fill="none">
-                                <rect x="6" y="10" width="36" height="32" rx="2" stroke="currentColor"
-                                    stroke-width="3" />
-                                <path d="M14 6V14M34 6V14" stroke="currentColor" stroke-width="3"
-                                    stroke-linecap="round" />
-                                <path d="M6 18H42" stroke="currentColor" stroke-width="3" />
-                            </svg>
-                        </div>
-                        <div class="detail-content">
-                            <h3>Event Date</h3>
-                            <p>13 - 15 March 2026</p>
-                        </div>
-                    </div>
-                </div>
+                    <div class="details-grid">
+                        <!-- Left Sub-Column: Location + Date -->
+                        <div class="details-column">
+                            <div class="detail-card">
 
-                <!-- Right Column: Price + What's Included -->
-                <div class="details-column">
-                    <div class="detail-card">
-                        <div class="detail-icon">
-                            <svg width="60" height="60" viewBox="0 0 48 48" fill="none">
-                                <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3" />
-                                <path d="M24 16V24H32" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
-                                <path d="M18 8C14 10 10 14 8 18" stroke="currentColor" stroke-width="3"
-                                    stroke-linecap="round" />
-                            </svg>
-                        </div>
-                        <div class="detail-content">
-                            <h3>Price</h3>
-                            <p class="tbc">To be confirmed</p>
-                        </div>
-                    </div>
+                                <div class="detail-content"
+                                    style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+                                    <h3>Location</h3>
+                                    <p>Marysienka Resort</p>
+                                    <p class="location-detail">Topornia 23</p>
 
-                    <!-- What's Included in right column -->
-                    <div class="included-box">
-                        <h4 class="included-box-title">What is Included?</h4>
-                        <div class="included-list">
-                            <div class="included-item-small">
-                                <span class="bullet">•</span>
-                                <span>Transport</span>
+                                    <!-- Google Map (Square) -->
+                                    <div class="map-container"
+                                        style="margin-top: 1rem; width: 100%; max-width: 300px; aspect-ratio: 1 / 1; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                                        <iframe width="100%" height="100%" frameborder="0" style="border:0"
+                                            src="https://maps.google.com/maps?q=Ośrodek+Wypoczynkowy+Marysieńka+Topornia&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="included-item-small">
-                                <span class="bullet">•</span>
-                                <span>Accommodation</span>
+
+                            <!-- Event Date removed as per request -->
+                        </div>
+
+                        <!-- Right Sub-Column: Price + What's Included -->
+                        <div class="details-column">
+                            <div class="detail-card">
+
+                                <div class="detail-content">
+                                    <h3>Price</h3>
+                                    <p class="tbc">To be confirmed</p>
+                                </div>
                             </div>
-                            <div class="included-item-small">
-                                <span class="bullet">•</span>
-                                <span>Meals</span>
-                            </div>
-                            <div class="included-item-small">
-                                <span class="bullet">•</span>
-                                <span>Welcome Pack</span>
-                            </div>
-                            <div class="included-item-small">
-                                <span class="bullet">•</span>
-                                <span>All Activities</span>
-                            </div>
-                            <div class="included-item-small">
-                                <span class="bullet">•</span>
-                                <span>Competitions with prizes</span>
+
+                            <!-- What's Included in right column -->
+                            <div class="included-box">
+                                <h4 class="included-box-title">What is Included?</h4>
+                                <div class="included-list">
+                                    <div class="included-item-small">
+                                        <span class="bullet">•</span>
+                                        <span>Transport</span>
+                                    </div>
+                                    <div class="included-item-small">
+                                        <span class="bullet">•</span>
+                                        <span>Accommodation</span>
+                                    </div>
+                                    <div class="included-item-small">
+                                        <span class="bullet">•</span>
+                                        <span>Meals</span>
+                                    </div>
+                                    <div class="included-item-small">
+                                        <span class="bullet">•</span>
+                                        <span>Welcome Pack</span>
+                                    </div>
+                                    <div class="included-item-small">
+                                        <span class="bullet">•</span>
+                                        <span>All Activities</span>
+                                    </div>
+                                    <div class="included-item-small">
+                                        <span class="bullet">•</span>
+                                        <span>Competitions with prizes</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Registration Section -->
-    <section id="registration" class="registration-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">REGISTRATION</h2>
-            </div>
+                <!-- Right Column: Registration -->
+                <div id="registration" class="split-column registration-part registration-column">
+                    <div class="section-header">
+                        <h2 class="section-title">REGISTRATION</h2>
+                    </div>
 
-            <div class="registration-content">
-                <div class="registration-status">
-                    <h3>Coming Soon</h3>
-                    <p>Registration will open soon. Stay tuned!</p>
+                    <div class="registration-content">
+                        <div class="registration-status">
+                            <h3>Coming Soon</h3>
+                            <p>Registration will open soon. Stay tuned!</p>
+                        </div>
+                        <!-- You can add form or buttons here later -->
+                    </div>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- Previous Edition Section -->
-    <section id="previous-edition" class="previous-edition-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">PREVIOUS EDITION AT A GLANCE</h2>
-            </div>
 
-            <div class="edition-stats">
-                <div class="stat-item">
-                    <div class="stat-number">150+</div>
-                    <div class="stat-label">Participants</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">8</div>
-                    <div class="stat-label">Countries</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">3</div>
-                    <div class="stat-label">Days of Fun</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">20+</div>
-                    <div class="stat-label">Activities</div>
-                </div>
-            </div>
-
-            <div class="edition-content">
-                <p>*Miejsce na opis poprzedniej edycji - można tutaj dodać tekst opisujący najważniejsze momenty,
-                    wrażenia uczestników i klimat wydarzenia.*</p>
-            </div>
-
-            <div class="edition-gallery">
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">Photo 1</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">Photo 2</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">Photo 3</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">Photo 4</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Organizers Section -->
     <section id="organizers" class="organizers-section">
