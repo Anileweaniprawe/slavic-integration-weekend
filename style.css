@@ -1247,12 +1247,27 @@ body {
    Footer - Gradient Background (Stopka - gradientowe tło)
    ======================================== */
 .footer {
-    background: var(--color-black);
-    /* Czarne tło */
+    background: #2e3192;
+    /* Niebieskie tło */
     color: var(--color-white);
     /* Biały tekst */
-    padding: var(--spacing-xl) 0 var(--spacing-lg);
-    /* Padding: 96px góra, 0 boki, 64px dół */
+    padding: 3rem 0 2rem;
+    /* Zmniejszony padding */
+}
+
+.footer-email-link {
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--color-white);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    margin: 1.5rem 0;
+    transition: opacity 0.3s;
+}
+
+.footer-email-link:hover {
+    opacity: 0.8;
 }
 
 .footer-content {
