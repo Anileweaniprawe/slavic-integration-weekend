@@ -641,7 +641,7 @@ body {
    Details Section - Horizontal Layouts (Sekcja szczegółów - poziome układy)
    ======================================== */
 .details-section {
-    padding: var(--spacing-xxxl) 0;
+    padding: var(--spacing-md) 0;
     /* Padding: 160px góra/dół */
     background: var(--color-gray-light);
     /* Jasnoszare tło */
@@ -650,8 +650,8 @@ body {
 .details-grid {
     display: grid;
     /* CSS Grid - 3 kolumny obok siebie */
-    grid-template-columns: repeat(3, 1fr);
-    /* 3 równe kolumny */
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 równe kolumny (Location, Price) */
     gap: var(--spacing-md);
     /* Odstęp między kartami (64px) */
     margin-top: var(--spacing-md);
@@ -661,7 +661,7 @@ body {
 .detail-card {
     background: transparent;
     /* Przezroczyste tło zamiast białego */
-    padding: var(--spacing-xl) var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-md);
     /* Mniejszy padding po bokach */
     display: flex;
     /* Flexbox do układania ikony i tekstu */
@@ -688,27 +688,6 @@ body {
     /* Ukryj pseudo-element */
 }
 
-.detail-card:hover {
-    transform: none;
-    /* Bez ruchu przy hover */
-}
-
-
-
-.detail-card:nth-child(2) .detail-icon {
-    color: var(--color-cyan);
-    /* Druga karta: cyjan ikona */
-}
-
-.detail-card:nth-child(3) .detail-icon {
-    color: var(--color-orange);
-    /* Trzecia karta: pomarańczowa ikona */
-}
-
-.detail-card:hover .detail-icon {
-    transform: scale(1.05);
-    /* Przy hover: lekkie powiększenie */
-}
 
 .detail-content {
     display: flex;
@@ -735,7 +714,7 @@ body {
 .tbc {
     font-size: 1.1rem;
     /* Rozmiar tekstu "Soon announced" */
-    color: #999;
+    color: #b4b3b3;
     /* Szary kolor */
     font-style: italic;
     /* Kursywa */
@@ -745,15 +724,7 @@ body {
     /* Lekko rozstrzelone litery */
 }
 
-/* ========================================
-   Registration Section (Sekcja zapisów)
-   ======================================== */
-.registration-section {
-    padding: 60px 0;
-    /* Padding: 60px góra/dół (zmniejszone z 160px) */
-    background: var(--color-white);
-    /* Białe tło */
-}
+
 
 .registration-content {
     display: flex;
@@ -798,461 +769,13 @@ body {
     /* Odstęp między liniami */
 }
 
-.registration-form-placeholder {
-    padding: var(--spacing-xl);
-    /* Padding (96px) */
-    background: var(--color-white);
-    /* Białe tło */
-    border: 2px dashed var(--color-gray-medium);
-    /* Przerywana obramówka (pokazuje że to placeholder) */
-    border-radius: 4px;
-    /* Lekko zaokrąglone rogi */
-    text-align: center;
-    /* Wyśrodkuj tekst */
-    min-height: 300px;
-    /* Minimalna wysokość (miejsce na formułkę) */
-    display: flex;
-    /* Flexbox */
-    align-items: center;
-    /* Wyśrodkuj w pionie */
-    justify-content: center;
-    /* Wyśrodkuj w poziomie */
-}
-
-.registration-form-placeholder .placeholder-text {
-    font-size: 1.3rem;
-    /* Większy tekst */
-    color: #999;
-    /* Szary */
-    font-style: italic;
-    /* Kursywa */
-    font-weight: 500;
-    /* Semi-bold */
-}
-
-/* ========================================
-   Previous Edition Section (Sekcja poprzedniej edycji)
-   ======================================== */
-.previous-edition-section {
-    padding: 60px 0;
-    /* Padding: 60px góra/dół (zmniejszone z 160px) */
-    background: var(--color-gray-light);
-    /* Jasnoszare tło */
-}
-
-.edition-stats {
-    display: grid;
-    /* CSS Grid */
-    grid-template-columns: repeat(4, 1fr);
-    /* 4 kolumny obok siebie */
-    gap: var(--spacing-xl);
-    /* Odstęp między statystykami (96px) */
-    margin-bottom: var(--spacing-xl);
-    /* Odstęp pod statystykami */
-    text-align: center;
-    /* Wyśrodkowany tekst */
-}
-
-.stat-item {
-    padding: var(--spacing-lg);
-    /* Padding (64px) */
-}
-
-.stat-number {
-    font-size: 4rem;
-    /* Duże liczby (64px) */
-    font-weight: 900;
-    /* Maksymalne pogrubienie */
-    color: var(--color-blue);
-    /* Niebieski */
-    line-height: 1;
-    /* Ciasny odstęp */
-    margin-bottom: var(--spacing-sm);
-    /* Odstęp pod liczbą */
-}
-
-.stat-label {
-    font-size: 1.1rem;
-    /* Rozmiar label */
-    color: var(--color-gray-dark);
-    /* Ciemnoszary */
-    text-transform: uppercase;
-    /* WIELKIE LITERY */
-    letter-spacing: 1px;
-    /* Rozstrzelone litery */
-}
-
-.edition-content {
-    max-width: 800px;
-    /* Maksymalna szerokość tekstu */
-    margin: 0 auto var(--spacing-xl);
-    /* Wyśrodkowanie i odstęp pod tekstem */
-    text-align: center;
-    /* Wyśrodkowany tekst */
-}
-
-.edition-content p {
-    font-size: 1.1rem;
-    /* Rozmiar tekstu */
-    color: var(--color-gray-dark);
-    /* Ciemnoszary */
-    line-height: 1.8;
-    /* Odstęp między liniami */
-    font-style: italic;
-    /* Kursywa dla placeholdera */
-}
-
-.edition-gallery {
-    display: grid;
-    /* CSS Grid */
-    grid-template-columns: repeat(4, 1fr);
-    /* 4 zdjęcia obok siebie */
-    gap: var(--spacing-md);
-    /* Odstęp między zdjęciami (32px) */
-    margin-top: var(--spacing-xl);
-    /* Odstęp nad galerią */
-}
-
-.gallery-item {
-    aspect-ratio: 4/3;
-    /* Proporcje zdjęcia */
-    overflow: hidden;
-    /* Ukryj nadmiar */
-    border-radius: 4px;
-    /* Zaokrąglone rogi */
-}
-
-.gallery-placeholder {
-    width: 100%;
-    /* Pełna szerokość */
-    height: 100%;
-    /* Pełna wysokość */
-    background: var(--color-gray-medium);
-    /* Szare tło placeholder */
-    display: flex;
-    /* Flexbox */
-    align-items: center;
-    /* Wyśrodkuj w pionie */
-    justify-content: center;
-    /* Wyśrodkuj w poziomie */
-    color: #999;
-    /* Szary tekst */
-    font-weight: 600;
-    /* Semi-bold */
-    transition: all var(--transition-medium);
-    /* Płynne animacje */
-}
-
-.gallery-placeholder:hover {
-    background: var(--color-blue);
-    /* Niebieski przy hover */
-    color: var(--color-white);
-    /* Biały tekst */
-}
-
-/* ========================================
-   Organizers Section (Sekcja organizatorów)
-   ======================================== */
-.organizers-section {
-    padding: 60px 0;
-    /* Padding: 60px góra/dół (zmniejszone z 160px) */
-    background: var(--color-white);
-    /* Białe tło */
-}
-
-.organizer-card {
-    display: grid;
-    /* CSS Grid */
-    grid-template-columns: 300px 1fr;
-    /* Logo 300px, reszta flexible */
-    gap: var(--spacing-xl);
-    /* Odstęp (96px) */
-    align-items: center;
-    /* Wyrównaj w pionie */
-    max-width: 1000px;
-    /* Maksymalna szerokość */
-    margin: 0 auto;
-    /* Wyśrodkowanie */
-}
-
-.organizer-image {
-    width: 300px;
-    /* Szerokość */
-    height: 300px;
-    /* Wysokość - kwadrat */
-    border-radius: 8px;
-    /* Zaokrąglone rogi */
-    overflow: hidden;
-    /* Ukryj nadmiar */
-}
-
-.organizer-image-placeholder {
-    width: 100%;
-    /* Pełna szerokość */
-    height: 100%;
-    /* Pełna wysokość */
-    background: var(--color-gray-light);
-    /* Jasnoszare tło */
-    display: flex;
-    /* Flexbox */
-    align-items: center;
-    /* Wyśrodkuj w pionie */
-    justify-content: center;
-    /* Wyśrodkuj w poziomie */
-    color: #999;
-    /* Szary tekst */
-    font-weight: 600;
-    /* Semi-bold */
-    text-align: center;
-    /* Wyśrodkuj tekst */
-    border: 2px dashed var(--color-gray-medium);
-    /* Przerywany border */
-}
-
-.organizer-content h3 {
-    font-size: 2rem;
-    /* Duży tytuł */
-    font-weight: 700;
-    /* Bold */
-    color: var(--color-blue);
-    /* Niebieski */
-    margin-bottom: var(--spacing-md);
-    /* Odstęp pod tytułem */
-    text-transform: uppercase;
-    /* WIELKIE LITERY */
-}
-
-.organizer-content p {
-    font-size: 1.1rem;
-    /* Rozmiar tekstu */
-    color: var(--color-gray-dark);
-    /* Ciemnoszary */
-    line-height: 1.8;
-    /* Odstęp między liniami */
-    margin-bottom: var(--spacing-md);
-    /* Odstęp pod paragrafem */
-}
-
-/* ========================================
-   Partners Section (Sekcja partnerów)
-   ======================================== */
-.partners-section {
-    padding: 60px 0;
-    /* Padding: 60px góra/dół (zmniejszone z 160px) */
-    background: var(--color-white);
-    /* Białe tło */
-}
-
-.partners-content {
-    display: grid;
-    /* CSS Grid */
-    grid-template-columns: 1fr;
-    /* Jedna kolumna (pełna szerokość) */
-    gap: var(--spacing-xl);
-    /* Odstęp między elementami (96px) */
-    margin-top: var(--spacing-xl);
-    /* Odstęp nad contentem (96px) */
-}
-
-.partner-info-card {
-    background: var(--color-gray-light);
-    /* Jasnoszare tło */
-    padding: var(--spacing-xl);
-    /* Padding wokół (96px) */
-    border-radius: 0;
-    /* Ostre rogi */
-    box-shadow: none;
-    /* Bez cienia */
-    border-left: 4px solid var(--color-magenta);
-    /* Lewy akcent różowy (4px) */
-}
-
-.partner-info-card h3 {
-    font-size: 2.5rem;
-    /* Duży tytuł (45px) */
-    font-weight: 900;
-    /* Maksymalne pogrubienie */
-    margin-bottom: var(--spacing-lg);
-    /* Odstęp pod tytułem (64px) */
-    color: var(--color-black);
-    /* Czarny */
-    letter-spacing: -1px;
-    /* Zbliżone litery */
-}
-
-.partner-text-area {
-    color: var(--color-gray-dark);
-    /* Ciemnoszary tekst */
-    line-height: 1.8;
-    /* Odstęp między liniami */
-}
-
-.placeholder-text {
-    font-size: 1.15rem;
-    /* Trochę większy tekst */
-    margin-bottom: var(--spacing-md);
-    /* Odstęp pod paragrafem (32px) */
-}
-
-.partner-benefits {
-    margin-top: var(--spacing-lg);
-    /* Odstęp nad sekcją (64px) */
-    padding: var(--spacing-lg);
-    /* Padding wokół (64px) */
-    background: var(--color-white);
-    /* Białe tło */
-    border-radius: 0;
-    /* Ostre rogi */
-    border-left: 4px solid var(--color-green);
-    /* Lewy akcent zielony */
-}
-
-.partner-benefits h4 {
-    font-size: 1.5rem;
-    /* Rozmiar podtytułu */
-    font-weight: 700;
-    /* Pogrubienie */
-    margin-bottom: var(--spacing-md);
-    /* Odstęp pod tytułem (32px) */
-    color: var(--color-black);
-    /* Czarny */
-}
-
-.partner-benefits ul {
-    list-style: none;
-    /* Usuń domyślne kropki */
-    padding-left: 0;
-    /* Usuń domyślny padding */
-}
-
-.partner-benefits li {
-    padding: 0.7rem 0 0.7rem 2.5rem;
-    /* Padding: 11.2px góra/dół, 0 prawo, 11.2px dół, 40px lewo (miejsce na checkmark) */
-    position: relative;
-    /* Dla absolutnej checkmarki */
-    font-size: 1.1rem;
-    /* Rozmiar tekstu */
-}
-
-.partner-benefits li::before {
-    content: '✓';
-    /* Checkmark (ptaszek) */
-    position: absolute;
-    /* Pozycjonowanie absolutne */
-    left: 0;
-    /* Od lewej */
-    color: var(--color-green);
-    /* Zielony */
-    font-weight: 900;
-    /* Pogrubienie */
-    font-size: 1.4rem;
-    /* Większy checkmark */
-}
-
-.contact-info {
-    margin-top: var(--spacing-lg);
-    /* Odstęp nad sekcją (64px) */
-    padding: var(--spacing-lg);
-    /* Padding (64px) */
-    background: var(--color-white);
-    /* Białe tło */
-    border-radius: 0;
-    /* Ostre rogi */
-    border-left: 4px solid var(--color-cyan);
-    /* Lewy akcent cyjan */
-}
-
-.contact-info h4 {
-    font-size: 1.5rem;
-    /* Rozmiar podtytułu */
-    font-weight: 700;
-    /* Pogrubienie */
-    margin-bottom: var(--spacing-md);
-    /* Odstęp pod tytułem (32px) */
-    color: var(--color-black);
-    /* Czarny */
-}
-
-.current-partners {
-    background: var(--color-white);
-    /* Białe tło */
-    padding: var(--spacing-xl);
-    /* Padding (96px) */
-    border-radius: 0;
-    /* Ostre rogi */
-    box-shadow: none;
-    /* Bez cienia */
-}
-
-.current-partners h3 {
-    font-size: 2.5rem;
-    /* Duży tytuł */
-    font-weight: 900;
-    /* Maksymalne pogrubienie */
-    margin-bottom: var(--spacing-lg);
-    /* Odstęp pod tytułem (64px) */
-    color: var(--color-black);
-    /* Czarny */
-    letter-spacing: -1px;
-    /* Zbliżone litery */
-}
-
-.partners-grid {
-    display: grid;
-    /* CSS Grid */
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    /* Automatyczne kolumny: minimum 250px szerokości, tyle ile się zmieści */
-    gap: var(--spacing-lg);
-    /* Odstęp między elementami (64px) */
-}
-
-.partner-placeholder {
-    aspect-ratio: 16/9;
-    /* Proporcje 16:9 (jak wideo) - zachowuje kształt */
-    background: var(--color-gray-light);
-    /* Jasnoszare tło */
-    border-radius: 0;
-    /* Ostre rogi */
-    display: flex;
-    /* Flexbox do centrowania tekstu */
-    align-items: center;
-    /* Wyśrodkuj w pionie */
-    justify-content: center;
-    /* Wyśrodkuj w poziomie */
-    border: 2px dashed #ccc;
-    /* Przerywana obramówka (pokazuje że to placeholder) */
-    transition: all var(--transition-medium);
-    /* Płynne animacje */
-}
-
-.partner-placeholder:hover {
-    border-color: var(--color-cyan);
-    /* Przy hover: cyjan obramówka */
-    background: rgba(0, 174, 239, 0.05);
-    /* Przy hover: bardzo delikatne cyjan tło (5% opacity) */
-    transform: translateY(-5px);
-    /* Przy hover: przesuń 5px w górę */
-}
-
-.partner-logo-placeholder {
-    color: #999;
-    /* Szary kolor tekstu placeholder */
-    font-weight: 600;
-    /* Semi-bold */
-    text-align: center;
-    /* Wyśrodkuj tekst */
-}
-
-/* ========================================
-   Footer - Gradient Background (Stopka - gradientowe tło)
-   ======================================== */
 .footer {
     background: #2e3192;
     /* Niebieskie tło */
     color: var(--color-white);
     /* Biały tekst */
-    padding: 3rem 0 2rem;
-    /* Zmniejszony padding */
+    padding: 1.5rem 0 1rem;
+    /* Zmniejszony padding (kompaktowy footer) */
 }
 
 .footer-email-link {
@@ -1967,4 +1490,102 @@ body {
 /* Ukrywamy pusty padding w registration-column jeśli był */
 .registration-column {
     padding: 0;
+}
+
+/* Nowy styl stopki - Social Icons w kółeczkach */
+.footer-contact-info {
+    text-align: left;
+}
+
+.social-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    color: var(--color-white) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.social-circle:hover {
+    background: var(--color-white);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: var(--slavic-blue) !important;
+}
+
+.social-circle svg {
+    transition: stroke 0.3s ease;
+}
+
+.social-circle:hover svg {
+    stroke: var(--slavic-blue);
+}
+
+/* Footer matching Hero aesthetics */
+.footer h3 {
+    font-family: 'Oswald', sans-serif !important;
+    text-transform: uppercase;
+    font-weight: 500 !important;
+    letter-spacing: 1px !important;
+}
+
+.footer-email-link {
+    color: white !important;
+    /* White text */
+    font-family: 'Oswald', sans-serif !important;
+    font-size: 1.1rem !important;
+    /* Smaller font */
+    font-weight: 400 !important;
+    letter-spacing: 1px;
+}
+
+.footer .social-circle:hover {
+    color: #f47b20 !important;
+    /* Orange hover icon */
+    background: white;
+}
+
+.footer .social-circle:hover svg {
+    stroke: #f47b20 !important;
+}
+/* Included Box Styles */
+.included-box {
+    margin-top: 1rem;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.included-box-title {
+    color: var(--slavic-blue); /* Niebieski */
+    font-size: 1.1rem; /* Mniejszy tytuł */
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.included-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem; /* Małe odstępy */
+    font-size: 0.9rem; /* Mniejsza czcionka listy */
+    color: var(--color-gray-dark);
+    align-items: center; /* Wyśrodkowanie elementów listy */
+}
+
+.included-item-small {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center; /* Wyśrodkowanie */
+}
+
+.bullet {
+    color: var(--slavic-blue); /* Niebieska kropka */
+    font-size: 1.2rem;
+    line-height: 1;
 }

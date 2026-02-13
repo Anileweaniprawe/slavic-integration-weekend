@@ -76,17 +76,19 @@ navLinks.forEach(link => {
 // ========================================
 // Active Navigation Link on Scroll
 // ========================================
-const sections = document.querySelectorAll('section[id]');
+const sections = document.querySelectorAll('section[id], footer[id], div.split-column[id]');
 
 function setActiveNav() {
     const scrollY = window.pageYOffset;
+    const headerOffset = 100;
 
     sections.forEach(section => {
         const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 100;
+        // Oblicz pozycję absolutną względem dokumentu
+        const sectionTop = section.getBoundingClientRect().top + window.pageYOffset - headerOffset;
         const sectionId = section.getAttribute('id');
 
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === `#${sectionId}`) {
@@ -120,14 +122,26 @@ window.addEventListener('scroll', () => {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+
+        const target = document.querySelector(targetId);
 
         if (target) {
-            const offsetTop = target.offsetTop - 80;
+            const headerOffset = 80;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
             window.scrollTo({
-                top: offsetTop,
+                top: offsetPosition,
                 behavior: 'smooth'
             });
+
+            // Zamknij menu mobilne po kliknięciu
+            navMenu.classList.remove('active');
+            const spans = hamburger.querySelectorAll('span');
+            spans.forEach(span => span.style.transform = 'none');
+            spans[1].style.opacity = '1';
         }
     });
 });
@@ -168,28 +182,9 @@ if (aboutText) {
     fadeInObserver.observe(aboutText);
 }
 
-// Observe partner sections
-document.querySelectorAll('.partner-info-card, .current-partners').forEach(element => {
-    fadeInObserver.observe(element);
-});
 
-// ========================================
-// Counter Animation for Numbers (if needed in future)
-// ========================================
-function animateCounter(element, target, duration = 2000) {
-    let start = 0;
-    const increment = target / (duration / 16);
 
-    const timer = setInterval(() => {
-        start += increment;
-        if (start >= target) {
-            element.textContent = target;
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(start);
-        }
-    }, 16);
-}
+
 
 // ========================================
 // Parallax Effect for Hero Section
@@ -205,20 +200,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// ========================================
-// Add hover effect to partner placeholders
-// ========================================
-const partnerPlaceholders = document.querySelectorAll('.partner-placeholder');
 
-partnerPlaceholders.forEach(placeholder => {
-    placeholder.addEventListener('mouseenter', function () {
-        this.style.transform = 'scale(1.05) rotate(2deg)';
-    });
-
-    placeholder.addEventListener('mouseleave', function () {
-        this.style.transform = 'scale(1) rotate(0deg)';
-    });
-});
 
 // ========================================
 // Add interactive glow effect to detail cards
@@ -253,53 +235,7 @@ window.addEventListener('load', () => {
     }, 100);
 });
 
-// ========================================
-// Image Slider for About Section
-// ========================================
-let currentSlideIndex = 0;
-const sliderImages = document.querySelectorAll('.slider-image');
-const sliderDots = document.querySelectorAll('.slider-dot');
-const totalSlides = sliderImages.length;
 
-function showSlide(index) {
-    // Ukryj wszystkie zdjęcia
-    sliderImages.forEach(img => img.classList.remove('active'));
-    sliderDots.forEach(dot => dot.classList.remove('active'));
-
-    // Pokaż wybrane zdjęcie
-    if (sliderImages[index]) {
-        sliderImages[index].classList.add('active');
-        sliderDots[index].classList.add('active');
-    }
-}
-
-function nextSlide() {
-    currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
-    showSlide(currentSlideIndex);
-}
-
-function prevSlide() {
-    currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
-    showSlide(currentSlideIndex);
-}
-
-// Event listeners dla przycisków
-const btnPrev = document.getElementById('sliderPrev');
-const btnNext = document.getElementById('sliderNext');
-
-if (btnPrev) btnPrev.addEventListener('click', prevSlide);
-if (btnNext) btnNext.addEventListener('click', nextSlide);
-
-// Event listeners dla dots
-sliderDots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        currentSlideIndex = index;
-        showSlide(currentSlideIndex);
-    });
-});
-
-// Auto-play (zmiana co 5 sekund)
-setInterval(nextSlide, 5000);
 
 // ========================================
 // Folders & Lightbox
@@ -310,7 +246,7 @@ function toggleFolder(folder) {
     // folders.forEach(f => {
     //    if (f !== folder) f.classList.remove('open');
     // });
-    
+
     folder.classList.toggle('open');
 }
 
@@ -327,7 +263,7 @@ function closeLightbox() {
 }
 
 // Close lightbox on Escape key
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event) {
     if (event.key === "Escape") {
         closeLightbox();
     }
