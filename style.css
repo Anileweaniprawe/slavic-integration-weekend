@@ -963,11 +963,18 @@ body {
         /* Pokaż hamburger menu na mobile */
     }
 
+    .nav-container {
+        height: 60px;
+        /* Wymuszona mniejsza wysokość paska na mobile */
+        padding: 0 var(--spacing-sm);
+        /* Reset paddingu */
+    }
+
     .nav-menu {
         position: fixed;
         /* Menu przyklejone */
-        top: 80px;
-        /* Pod navbarem */
+        top: 60px;
+        /* Pod navbarem (60px) */
         left: -100%;
         /* Początkowo schowane za lewą krawędzią */
         width: 100%;
@@ -1552,6 +1559,7 @@ body {
 .footer .social-circle:hover svg {
     stroke: #f47b20 !important;
 }
+
 /* Included Box Styles */
 .included-box {
     margin-top: 1rem;
@@ -1560,8 +1568,10 @@ body {
 }
 
 .included-box-title {
-    color: var(--slavic-blue); /* Niebieski */
-    font-size: 1.1rem; /* Mniejszy tytuł */
+    color: var(--slavic-blue);
+    /* Niebieski */
+    font-size: 1.1rem;
+    /* Mniejszy tytuł */
     font-weight: 700;
     margin-bottom: 0.5rem;
     text-transform: uppercase;
@@ -1571,21 +1581,26 @@ body {
 .included-list {
     display: flex;
     flex-direction: column;
-    gap: 0.3rem; /* Małe odstępy */
-    font-size: 0.9rem; /* Mniejsza czcionka listy */
+    gap: 0.3rem;
+    /* Małe odstępy */
+    font-size: 0.9rem;
+    /* Mniejsza czcionka listy */
     color: var(--color-gray-dark);
-    align-items: center; /* Wyśrodkowanie elementów listy */
+    align-items: center;
+    /* Wyśrodkowanie elementów listy */
 }
 
 .included-item-small {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    justify-content: center; /* Wyśrodkowanie */
+    justify-content: center;
+    /* Wyśrodkowanie */
 }
 
 .bullet {
-    color: var(--slavic-blue); /* Niebieska kropka */
+    color: var(--slavic-blue);
+    /* Niebieska kropka */
     font-size: 1.2rem;
     line-height: 1;
 }
