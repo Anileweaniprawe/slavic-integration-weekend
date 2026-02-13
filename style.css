@@ -964,7 +964,7 @@ body {
     }
 
     .nav-container {
-        height: 60px;
+        height: 50px;
         /* Wymuszona mniejsza wysokość paska na mobile */
         padding: 0 var(--spacing-sm);
         /* Reset paddingu */
@@ -973,8 +973,8 @@ body {
     .nav-menu {
         position: fixed;
         /* Menu przyklejone */
-        top: 60px;
-        /* Pod navbarem (60px) */
+        top: 50px;
+        /* Pod navbarem (50px) */
         left: -100%;
         /* Początkowo schowane za lewą krawędzią */
         width: 100%;
