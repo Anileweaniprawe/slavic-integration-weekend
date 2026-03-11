@@ -658,6 +658,14 @@ body {
     /* Odstęp nad gridem (96px) */
 }
 
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    align-items: center;
+    justify-items: center;
+}
+
 .detail-card {
     background: transparent;
     /* Przezroczyste tło zamiast białego */
@@ -1365,21 +1373,7 @@ body {
     cursor: zoom-in;
 }
 
-.right {
-    /* Dodana klasa 'right' dla transformacji frontu, jeśli potrzebna */
-    /* Użytkownik wspomniał o .right w hover, ale nie w definicji. */
-    /* Zakładam, że .folder__front może mieć klasę .right lub to oddzielny element? */
-    /* Zostawiam puste, bo w HTML dodam klasę 'right' do frontu jeśli potrzeba? */
-    /* W CSS: .folder:not(.folder--click):hover .right */
-    /* Wygląda na to, że 'right' to może być po prostu folder__front, ale transformuje się inaczej? */
-    /* Użytkownik dał: .folder:not(.folder--click):hover .folder__front ORAZ .right. */
-    /* Zinterpretuję to tak: dodam też element .right w HTML jako kopię frontu albo cień? */
-    /* Ale w CSS: .folder.open .folder__front i .folder.open .right mają te same transformacje (skew -15 vs 15). */
-    /* Więc chyba folder ma dwie części frontu? Lewą i prawą? */
-    /* Ale folder__front ma width 100%. */
-    /* Podejrzewam, że to animacja otwierania "skrzydeł". */
-    /* Dodam w HTML element <div class="folder__front right"></div> obok zwykłego frontu. */
-}
+
 
 .folder__front.right {
     /* Jeśli right ma inne właściwości startowe? */
