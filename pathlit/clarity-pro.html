@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500&family=Syne:wght@600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="pathlit.css">
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -19,16 +20,20 @@
             <a href="index.html" class="nav-logo">PATHLIT</a>
             <div class="nav-links">
                 <a href="index.html" class="nav-link">Home</a>
+                <a href="quiz.html" class="nav-link">Quiz</a>
+                <a href="archetypes.html" class="nav-link">Archetypes</a>
                 <a href="about.html" class="nav-link">About</a>
                 <a href="clarity-pro.html" class="nav-link active">Pricing</a>
             </div>
-            <a href="index.html#quiz" class="nav-cta">Take the Free Quiz</a>
+            <a href="quiz.html" class="nav-cta">Take the Free Quiz</a>
             <button class="hamburger" id="hamburger" aria-label="Menu">
                 <span></span><span></span><span></span>
             </button>
         </div>
         <div class="mobile-menu" id="mobileMenu">
             <a href="index.html" class="mobile-link">Home</a>
+            <a href="quiz.html" class="mobile-link">Quiz</a>
+            <a href="archetypes.html" class="mobile-link">Archetypes</a>
             <a href="about.html" class="mobile-link">About</a>
             <a href="clarity-pro.html" class="mobile-link active">Pricing</a>
             <a href="#buy" class="mobile-cta">Get Full Report — $9.99</a>
@@ -36,7 +41,7 @@
     </nav>
 
     <div class="mobile-sticky-cta">
-        <a href="#buy" class="btn btn-primary btn-full">Get Your Full Report — $9.99</a>
+        <button class="btn btn-primary btn-full" onclick="openPaymentModal()">Get Your Full Report — $9.99</button>
     </div>
 
     <!-- Sales Hero -->
@@ -50,7 +55,7 @@
             </div>
             <h1>You saw your archetype.<br>But you only saw 20%<br>of the picture.</h1>
             <p class="sales-hero-sub">Your free result showed you WHO you are.<br>Your Clarity Pro report shows you WHAT TO DO about it.</p>
-            <a href="#buy" class="btn btn-primary btn-lg">Get Your Full Report — $9.99</a>
+            <button class="btn btn-primary btn-lg" onclick="openPaymentModal()">Get Your Full Report — $9.99</button>
         </div>
     </section>
 
@@ -266,7 +271,7 @@
             </div>
             <p class="guarantee-text">If your Clarity Pro report doesn't give you at least one "aha" moment, email us and get a full refund. No forms. No friction.</p>
             <h2>You already know who you are.<br>Now find out what to do about it.</h2>
-            <a href="#" class="btn btn-glow btn-lg">Get Your Full Report — $9.99</a>
+            <button class="btn btn-glow btn-lg" onclick="openPaymentModal()">Get Your Full Report — $9.99</button>
             <div class="payment-trust">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                 <span>Secure payment via Stripe &bull; Instant PDF delivery &bull; Lifetime access</span>
@@ -286,9 +291,10 @@
                 <div class="footer-col">
                     <h4>Links</h4>
                     <a href="index.html">Home</a>
+                    <a href="quiz.html">Take the Quiz</a>
+                    <a href="archetypes.html">Archetypes</a>
                     <a href="about.html">About</a>
                     <a href="clarity-pro.html">Pricing</a>
-                    <a href="index.html#quiz">Take the Quiz</a>
                 </div>
                 <div class="footer-col">
                     <h4>Legal</h4>
@@ -311,6 +317,172 @@
         </div>
     </footer>
 
+    <!-- Payment Modal -->
+    <div class="payment-overlay" id="paymentOverlay">
+        <div class="payment-modal glass-panel">
+            <button class="payment-close" id="paymentClose" aria-label="Close">&times;</button>
+
+            <div class="payment-modal-header">
+                <div class="payment-product">
+                    <span class="payment-product-label">Clarity Pro Report</span>
+                    <span class="payment-product-price">$9.99</span>
+                </div>
+                <p class="payment-product-desc">15-page personalised PDF &bull; 3 career paths &bull; 30-day plan</p>
+            </div>
+
+            <div class="payment-form" id="paymentForm">
+                <div class="payment-field">
+                    <label for="payEmail">Email address</label>
+                    <input type="email" id="payEmail" placeholder="your@email.com" required>
+                    <span class="payment-field-hint">Your report will be delivered here</span>
+                </div>
+
+                <div class="payment-card-section">
+                    <label>Card details</label>
+                    <div class="payment-card-element" id="cardElement">
+                        <!-- Stripe Card Element mounts here -->
+                    </div>
+                    <div class="payment-card-error" id="cardError"></div>
+                </div>
+
+                <button class="btn btn-glow btn-lg btn-full" id="payButton" type="button">
+                    <span id="payBtnText">Pay $9.99</span>
+                    <span id="payBtnSpinner" class="pay-spinner" style="display:none;"></span>
+                </button>
+
+                <div class="payment-footer">
+                    <div class="payment-trust-row">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <span>Secured by Stripe</span>
+                    </div>
+                    <div class="payment-trust-row">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <span>14-day money-back guarantee</span>
+                    </div>
+                    <div class="payment-methods">
+                        <span class="pm-badge">Visa</span>
+                        <span class="pm-badge">Mastercard</span>
+                        <span class="pm-badge">Amex</span>
+                        <span class="pm-badge">Apple Pay</span>
+                        <span class="pm-badge">Google Pay</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="pathlit.js"></script>
+    <script>
+    // ==========================================
+    //  STRIPE PAYMENT INTEGRATION
+    // ==========================================
+    //
+    //  HOW TO CONFIGURE:
+    //  1. Replace STRIPE_PUBLISHABLE_KEY with your real Stripe publishable key
+    //  2. Create a Stripe Payment Intent endpoint on your backend
+    //  3. Replace the /api/create-payment-intent URL below
+    //  4. Set up a webhook to deliver the PDF on successful payment
+    //
+    //  For a no-code approach, replace this entire script with a
+    //  Stripe Payment Link: https://stripe.com/docs/payment-links
+    //
+
+    const CHECKOUT_API_URL = '/api/create-checkout-session';
+
+    let stripe;
+
+    // Initialize Stripe (lazy)
+    function initStripe() {
+        if (stripe) return;
+        try {
+            // Stripe.js loads from the <script> tag in <head>
+            stripe = Stripe(window.STRIPE_PK || 'pk_test_YOUR_KEY_HERE');
+        } catch (e) {
+            console.log('Stripe.js not loaded — checkout will use server-side redirect.');
+        }
+    }
+
+    // Open/close modal
+    function openPaymentModal() {
+        document.getElementById('paymentOverlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+        initStripe();
+    }
+
+    function closePaymentModal() {
+        document.getElementById('paymentOverlay').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    document.getElementById('paymentClose').addEventListener('click', closePaymentModal);
+    document.getElementById('paymentOverlay').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) closePaymentModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closePaymentModal();
+    });
+
+    // Payment handler — Stripe Checkout redirect flow
+    document.getElementById('payButton').addEventListener('click', async () => {
+        const email = document.getElementById('payEmail').value.trim();
+        if (!email || !email.includes('@')) {
+            document.getElementById('cardError').textContent = 'Please enter a valid email address.';
+            return;
+        }
+
+        const btnText = document.getElementById('payBtnText');
+        const btnSpinner = document.getElementById('payBtnSpinner');
+        const payBtn = document.getElementById('payButton');
+
+        payBtn.disabled = true;
+        btnText.textContent = 'Redirecting...';
+        btnSpinner.style.display = 'inline-block';
+        document.getElementById('cardError').textContent = '';
+
+        try {
+            // Get quiz result ID from localStorage (saved after quiz completion)
+            const quizId = localStorage.getItem('pathlit_quiz_id') || '';
+
+            const response = await fetch(CHECKOUT_API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, quizId })
+            });
+
+            const data = await response.json();
+
+            if (data.error) {
+                document.getElementById('cardError').textContent = data.error;
+                return;
+            }
+
+            // Demo mode — server returns demo flag when Stripe isn't configured
+            if (data.demo) {
+                localStorage.setItem('pathlit_paid', 'true');
+                localStorage.setItem('pathlit_email', email);
+                window.location.href = 'success.html';
+                return;
+            }
+
+            // Real Stripe — redirect to Checkout
+            if (stripe && data.sessionId) {
+                const { error } = await stripe.redirectToCheckout({ sessionId: data.sessionId });
+                if (error) {
+                    document.getElementById('cardError').textContent = error.message;
+                }
+            } else {
+                document.getElementById('cardError').textContent = 'Payment service unavailable. Please try again.';
+            }
+
+        } catch (err) {
+            document.getElementById('cardError').textContent = 'Payment failed. Please try again.';
+        } finally {
+            payBtn.disabled = false;
+            btnText.textContent = 'Pay $9.99';
+            btnSpinner.style.display = 'none';
+        }
+    });
+    </script>
 </body>
 </html>
