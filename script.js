@@ -2,8 +2,8 @@
 // Countdown Timer
 // ========================================
 function updateCountdown() {
-    // Data wydarzenia: 13 marca 2026, 00:00:00
-    const eventDate = new Date('2026-03-13T00:00:00').getTime();
+    // Data wydarzenia: 16 października 2026, 00:00:00
+    const eventDate = new Date('2026-10-16T00:00:00').getTime();
     const now = new Date().getTime();
     const distance = eventDate - now;
 
