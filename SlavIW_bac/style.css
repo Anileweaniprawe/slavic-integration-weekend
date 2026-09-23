@@ -1,0 +1,1708 @@
+/* ========================================
+   CSS Reset & Variables (Reset i Zmienne)
+   ======================================== */
+* {
+    margin: 0;
+    /* Usuwa wszystkie domyślne marginesy przeglądarki */
+    padding: 0;
+    /* Usuwa wszystkie domyślne paddingi przeglądarki */
+    box-sizing: border-box;
+    /* Szerokość/wysokość elementu ZAWIERA padding i border (łatwiejsze obliczenia) */
+}
+
+:root {
+    /* Brand Colors (Kolory marki ESN) */
+    --color-blue: #2e3192;
+    /* Główny niebieski kolor ESN */
+    --color-green: #7ac143;
+    /* Zielony kolor ESN */
+    --color-orange: #f47b20;
+    /* Pomarańczowy kolor ESN */
+    --color-white: #ffffff;
+    /* Biały */
+    --color-cyan: #00aeef;
+    /* Cyjan/jasny niebieski */
+    --color-magenta: #ec008c;
+    /* Różowy/magenta */
+    --color-black: #000000;
+    /* Czarny */
+
+    /* Neutral Colors (Kolory neutralne) */
+    --color-gray-light: #f8f9fa;
+    /* Bardzo jasny szary do tła */
+    --color-gray-medium: #e9ecef;
+    /* Średni szary do obramowań */
+    --color-gray-dark: #333333;
+    /* Ciemny szary do tekstu */
+
+    /* Gradients - More Subtle (Gradienty - subtelniejsze) */
+    --gradient-primary: linear-gradient(135deg, var(--color-blue) 0%, var(--color-cyan) 100%);
+    /* Gradient niebieski->cyjan */
+    --gradient-accent: linear-gradient(135deg, var(--color-orange) 0%, var(--color-magenta) 100%);
+    /* Gradient pomarańczowy->różowy */
+
+    /* Typography (Czcionki) */
+    --font-primary: 'Lato', sans-serif;
+    --font-header: 'Oswald', sans-serif;
+    /* Nowy font nagłówkowy */
+
+    /* Slavic Colors */
+    --slavic-orange: #F39200;
+    --slavic-blue: #2E3192;
+    --color-cream: #FFF7EB;
+    /* Bardzo jasny pomarańcz na tło */
+
+    /* Folder Colors */
+    --folder-color: #70a1ff;
+    --folder-back-color: #4785ff;
+    --paper-1: #e6e6e6;
+    --paper-2: #f2f2f2;
+    --paper-3: #ffffff;
+
+    /* Generous Spacing (Odstępy - hojne jak w nowoczesnych designach) */
+    --spacing-xs: 0.5rem;
+    /* Extra mały odstęp (8px) */
+    --spacing-sm: 1rem;
+    /* Mały odstęp (16px) */
+    --spacing-md: 2rem;
+    /* Średni odstęp (32px) */
+    --spacing-lg: 4rem;
+    /* Duży odstęp (64px) */
+    --spacing-xl: 6rem;
+    /* Extra duży odstęp (96px) */
+    --spacing-xxl: 8rem;
+    /* Extra extra duży odstęp (128px) */
+    --spacing-xxxl: 10rem;
+    /* Extra extra extra duży odstęp (160px) */
+
+    /* Transitions (Animacje przejścia) */
+    --transition-fast: 0.2s ease;
+    /* Szybka animacja (0.2 sekundy) */
+    --transition-medium: 0.3s ease;
+    /* Średnia animacja (0.3 sekundy) */
+    --transition-slow: 0.5s ease;
+    /* Wolna animacja (0.5 sekundy) */
+
+    /* Shadows - More Subtle (Cienie - subtelniejsze) */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    /* Mały, delikatny cień */
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.08);
+    /* Średni cień */
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+    /* Duży cień */
+}
+
+/* ========================================
+   Base Styles (Style bazowe)
+   ======================================== */
+html {
+    scroll-behavior: smooth;
+    /* Płynne scrollowanie przy kliknięciu w linki do sekcji */
+}
+
+body {
+    font-family: var(--font-primary);
+    /* Użyj czcionki Lato */
+    line-height: 1.8;
+    /* Odstęp między liniami tekstu (180% wysokości czcionki) - lepsze czytanie */
+    color: var(--color-black);
+    /* Domyślny kolor tekstu - czarny */
+    background: var(--color-white);
+    /* Tło strony - białe */
+    overflow-x: hidden;
+    /* Ukryj poziomy scrollbar (zapobiega przesuwaniu w lewo/prawo) */
+    font-size: 18px;
+    /* Bazowy rozmiar czcionki (większy = łatwiej czytać) */
+}
+
+.container {
+    max-width: 1400px;
+    /* Maksymalna szerokość contenera (nie będzie szersza niż 1400px) */
+    margin: 0 auto;
+    /* Wyśrodkowanie (automatyczne marginesy po bokach) */
+    padding: 0 var(--spacing-lg);
+    /* Padding po bokach (64px) - odstęp od krawędzi */
+}
+
+/* ========================================
+   Navigation - Minimalist (Nawigacja - minimalistyczna)
+   ======================================== */
+.navbar {
+    position: fixed;
+    /* Pasek "przyklejony" - zawsze widoczny mimo scrollowania */
+    top: 0;
+    /* Przyczepiony do samej góry */
+    left: 0;
+    /* Od lewej krawędzi */
+    right: 0;
+    /* Do prawej krawędzi (= pełna szerokość) */
+    background: rgba(255, 255, 255, 0.02);
+    /* Prawie niewidoczne tło */
+    backdrop-filter: blur(3px);
+    /* Minimalne rozmycie */
+    -webkit-backdrop-filter: blur(3px);
+    /* Wsparcie dla Safari */
+    box-shadow: none;
+    /* Brak cienia */
+    z-index: 900;
+    /* Wysoka wartość = pasek ZAWSZE na wierzchu innych elementów */
+    transition: all var(--transition-medium);
+    /* Płynne animacje przy zmianach (0.3s) */
+}
+
+.nav-container {
+    max-width: 1200px;
+    /* Maksymalna szerokość zawartości nawigacji */
+    margin: 0 auto;
+    /* Wyśrodkowanie */
+    padding: 0.5rem var(--spacing-sm);
+    /* Mniejszy padding góra/dół (8px) - niższy pasek */
+    display: flex;
+    /* Użyj flexbox do układania elementów */
+    justify-content: center;
+    /* Wyśrodkuj menu */
+    align-items: center;
+    /* Wyrównanie w pionie do środka */
+}
+
+.logo-text {
+    font-size: 1.3rem;
+    /* Rozmiar tekstu logo (20.8px) */
+    font-weight: 700;
+    /* Pogrubienie (bold) */
+    color: var(--color-blue);
+    /* Kolor niebieski ESN */
+    letter-spacing: -0.3px;
+    /* Lekkie zbliżenie liter (tighter spacing) */
+}
+
+.nav-menu {
+    display: flex;
+    gap: 40px;
+    /* Zmniejszono odstęp z 64px */
+    list-style: none;
+}
+
+.nav-link {
+    color: rgba(0, 0, 0, 0.78);
+    text-decoration: none;
+    /* Zachowaj brak podkreślenia domyślnego */
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 0.6rem 0;
+    transition: color .2s ease;
+    position: relative;
+    /* Dla ::after */
+}
+
+.nav-link::after {
+    content: '';
+    /* Pusty element (będzie podkreśleniem) */
+    position: relative;
+    /* Pozycja względem .nav-link */
+    bottom: 0;
+    /* Na samym dole linku */
+    left: 0;
+    /* Od lewej */
+    width: 0;
+    /* Początkowo niewidoczne (szerokość 0) */
+    height: 1px;
+    /* Wysokość podkreślenia (cieńsza) */
+    background: var(--color-blue);
+    /* Kolor niebieski zamiast różowego */
+    transition: width var(--transition-medium);
+    /* Płynne rozszerzanie (0.3s) */
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+    /* Przy hover lub aktywnym linku - pełna szerokość (podkreślenie pojawia się) */
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--slavic-blue);
+}
+
+.hamburger {
+    display: none;
+    /* Domyślnie ukryty (pokazuje się tylko na mobile) */
+    flex-direction: column;
+    /* Ustawienie pasków w kolumnie */
+    gap: 5px;
+    /* Odstęp między paskami */
+    cursor: pointer;
+    /* Kursor "ręka" przy najechaniu */
+}
+
+.hamburger span {
+    width: 25px;
+    /* Szerokość paska hamburgera */
+    height: 2px;
+    /* Wysokość paska */
+    background: var(--color-blue);
+    /* Kolor niebieski */
+    transition: all var(--transition-fast);
+    /* Płynna animacja (dla transformacji X) */
+    border-radius: 2px;
+    /* Lekkie zaokrąglenie rogów */
+}
+
+/* ========================================
+   Hero Section - Clean & Bold (Sekcja główna - czysta i wyrazista)
+   ======================================== */
+.hero {
+    position: relative;
+    /* Potrzebne dla absolutnego pozycjonowania .hero-background */
+    min-height: 100vh;
+    /* Minimalna wysokość = 100% wysokości viewport (pełny ekran) */
+    display: flex;
+    /* Flexbox do centrowania zawartości */
+    align-items: center;
+    /* Wyrównanie w pionie do środka */
+    justify-content: center;
+    /* Wyrównanie w poziomie do środka */
+    overflow: hidden;
+    /* Ukryj to co wychodzi poza (np. parallax) */
+    padding: 100px 0 40px;
+    /* Padding: 100px góra (navbar 80px + 20px), 40px dół - bardziej kompaktowo */
+}
+
+.hero-background {
+    position: absolute;
+    /* Pozycjonowanie absolutne (tło za tekstem) */
+    top: 0;
+    /* Od samej góry */
+    left: 0;
+    /* Od lewej */
+    width: 100%;
+    /* Pełna szerokość */
+    height: 100%;
+    /* Pełna wysokość */
+    background-image: url('marzec - 2025 (IMG_4650).jpg');
+    /* Przywrócono zdjęcie grupowe */
+    background-size: cover;
+    /* Rozciągnij zdjęcie aby pokryło cały obszar */
+    background-position: center;
+    /* Wycentruj zdjęcie */
+    background-repeat: no-repeat;
+    /* Nie powtarzaj zdjęcia */
+    z-index: -1;
+    /* Pod tekstem (niższa wartość = niżej w stosie) */
+}
+
+.hero-background::after {
+    content: '';
+    /* Pusty element (będzie nakładką gradientu) */
+    position: absolute;
+    /* Pozycja względem .hero-background */
+    top: 0;
+    /* Od góry */
+    left: 0;
+    /* Od lewej */
+    width: 100%;
+    /* Pełna szerokość */
+    height: 100%;
+    /* Pełna wysokość */
+    background: rgba(255, 247, 235, 0.80);
+    /* Jasny pomarańczowy/kremowy overlay (85% krycia) */
+    z-index: 1;
+    /* Nad zdjęciem, pod tekstem */
+}
+
+.hero-content {
+    text-align: center;
+    /* Wyśrodkuj tekst */
+    color: var(--color-white);
+    /* Biały kolor tekstu */
+    z-index: 2;
+    /* Nad zdjęciem i gradientem */
+    max-width: 1200px;
+    /* Maksymalna szerokość contentu */
+    padding: 0 var(--spacing-md);
+    /* Padding po bokach (32px) */
+    position: relative;
+    /* Potrzebne dla z-index */
+}
+
+.hero-header {
+    display: flex;
+    /* Flexbox - logo i tytuł w kolumnie */
+    flex-direction: column;
+    /* Elementy jeden pod drugim (logo nad tytułem) */
+    align-items: center;
+    /* Wyrównaj w poziomie do środka */
+    justify-content: center;
+    /* Wyśrodkuj */
+    gap: var(--spacing-md);
+    /* Mniejszy odstęp między logo a tytułem (32px) */
+    margin-bottom: 16px;
+    /* Jeszcze mniejszy odstęp pod headerem (16px), aby podnieść datę */
+    /* Jeszcze mniejszy odstęp pod headerem (16px), aby podnieść datę */
+}
+
+.logos-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    /* Odstęp między dwoma logami */
+    width: 100%;
+    margin-bottom: 24px;
+    /* Odstęp od tytułu */
+}
+
+.hero-logo,
+.esn-logo {
+    height: 90px;
+    /* Spójna wysokość dla obu logotypów */
+    width: auto;
+    object-fit: contain;
+    /* Zachowaj proporcje */
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+    /* Cień dla lepszej widoczności */
+}
+
+/* Responsywność dla mobile */
+@media (max-width: 480px) {
+
+    .hero-logo,
+    .esn-logo {
+        height: 70px;
+        /* Mniejsze na telefonach */
+        gap: 20px;
+    }
+}
+
+.hero-title {
+    font-family: 'Oswald', sans-serif;
+    /* Oswald - wysoki, condensed, wyrazisty */
+    font-size: clamp(3rem, 7vw, 6rem);
+    /* Większy, bo Oswald jest węższy */
+    font-weight: 500;
+    /* Regular (niepogrubione) */
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: -1px;
+    /* Ciasno */
+    color: var(--slavic-blue);
+    /* Domyślny, ale nadpisany przez span */
+    text-shadow: none;
+    /* Czysty tekst */
+    text-transform: uppercase;
+}
+
+.text-orange {
+    color: #f47b20;
+    display: block;
+    text-shadow: 4px 4px 0px rgba(243, 146, 0, 0.3);
+    /* Pomarańczowy cień (30% opacity aby nie zlał się całkowicie) */
+}
+
+.text-blue {
+    color: var(--slavic-blue);
+    display: block;
+    text-shadow: 4px 4px 0px rgba(243, 146, 0, 0.3);
+    /* Wyrazisty pomarańczowy cień */
+}
+
+.title-line {
+    display: block;
+    /* Każdy span w nowej linii */
+}
+
+.event-date {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    /* Responsywny rozmiar daty */
+    font-weight: 700;
+    /* Pogrubiony */
+    color: #2e3192;
+    /* Przywrócono biały */
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    /* Mocny cień dla czytelności */
+    margin-bottom: var(--spacing-md);
+    /* Mniejszy odstęp pod datą (64px zamiast 96px) */
+    letter-spacing: 2px;
+    /* Rozstrzelone litery */
+    text-transform: uppercase;
+    /* WIELKIE LITERY */
+}
+
+.countdown {
+    display: flex;
+    /* Flexbox - elementy obok siebie */
+    align-items: center;
+    /* Wyrównaj w pionie */
+    justify-content: center;
+    /* Wyśrodkuj */
+    gap: var(--spacing-sm);
+    /* Mniejszy odstęp między elementami (16px zamiast 32px) */
+    flex-wrap: wrap;
+    /* Zawijaj na mniejszych ekranach */
+}
+
+.countdown-item {
+    text-align: center;
+    /* Wyśrodkuj tekst */
+}
+
+.countdown-number {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    /* Duże liczby */
+    font-weight: 900;
+    /* Maksymalne pogrubienie */
+    color: #2e3192;
+    /* Przywrócono biały */
+    line-height: 1;
+    /* Ciasny odstęp */
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* Mocny cień dla czytelności */
+}
+
+.countdown-label {
+    font-size: 0.9rem;
+    /* Mały rozmiar */
+    color: #2e3192;
+    /* Prawie biały */
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    /* Cień */
+    text-transform: uppercase;
+    /* WIELKIE LITERY */
+    letter-spacing: 2px;
+    /* Rozstrzelone litery */
+    margin-top: var(--spacing-xs);
+    /* Odstęp nad label (8px) */
+}
+
+.countdown-separator {
+    font-size: clamp(2rem, 4vw, 3rem);
+    /* Rozmiar separatora */
+    color: #2e3192;
+    /* Półprzezroczysty biały */
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    font-weight: 300;
+    /* Light */
+}
+
+.scroll-indicator {
+    display: none;
+    /* Ukryty (nie używany w tym designie) */
+}
+
+/* ========================================
+   Vertical Section Labels (Pionowe etykiety sekcji)
+   ======================================== */
+.section-label {
+    position: absolute;
+    /* Pozycjonowanie absolutne (pionowy tekst z boku) */
+    left: var(--spacing-md);
+    /* 32px od lewej */
+    top: 50%;
+    /* Na środku wysokości */
+    transform: translateY(-50%) rotate(-90deg);
+    /* Przesuń do środka i obróć o 90° (pionowo) */
+    transform-origin: center;
+    /* Punkt obrotu = środek */
+    font-weight: 900;
+    /* Maksymalne pogrubienie */
+    font-size: 0.9rem;
+    /* Mały rozmiar */
+    letter-spacing: 3px;
+    /* Mocno rozstrzelone litery */
+    text-transform: uppercase;
+    /* WIELKIE LITERY */
+    color: var(--color-magenta);
+    /* Różowy */
+    opacity: 0.6;
+    /* 60% przezroczystości (delikatny efekt) */
+}
+
+/* ========================================
+   Section Styles - Generous Spacing (Style sekcji - duże odstępy)
+   ======================================== */
+.section-header {
+    margin-bottom: var(--spacing-md);
+    /* Odstęp pod nagłówkiem (96px) */
+}
+
+.section-title {
+    font-family: var(--font-header);
+    font-size: 3rem;
+    font-weight: 500;
+    color: var(--slavic-blue);
+    /* Kolor niebieski z plakatu */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-bottom: 0 !important;
+}
+
+.title-underline {
+    display: none;
+}
+
+.section-description {
+    font-size: 1.3rem;
+    /* Większy tekst opisu (23.4px) */
+    color: var(--color-gray-dark);
+    /* Ciemnoszary */
+    margin-top: var(--spacing-md);
+    /* Odstęp nad opisem (32px) */
+    line-height: 1.7;
+    /* Odstęp między liniami */
+}
+
+/* ========================================
+   About Section - Split Layout (Sekcja "O nas" - podzielony układ)
+   ======================================== */
+.about-section {
+    padding: var(--spacing-md) 0;
+    /* Padding: 64px góra/dół (zmniejszone dla mniejszych odstępów), 0 lewo/prawo */
+    background: var(--color-white);
+    /* Białe tło */
+    position: relative;
+    /* Dla absolutnych dzieci (jeśli są) */
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    /* Elementy jeden pod drugim */
+    gap: var(--spacing-md);
+    /* Odstęp między sliderem a tekstem (64px) */
+    align-items: center;
+    /* Wyśrodkuj elementy */
+    padding: 0 var(--spacing-md);
+    /* Mniejszy padding boczny */
+    max-width: 1000px;
+    /* Zmniejszona szerokość kontenera dla lepszej czytelności tekstu */
+    margin: 0 auto;
+    /* Wyśrodkowanie */
+}
+
+.about-image {
+    width: 100%;
+    /* Pełna szerokość kolumny */
+    height: 600px;
+    /* Stała wysokość obrazka */
+    object-fit: cover;
+    /* Przytnij zdjęcie żeby wypełniło cały obszar (zachowując proporcje) */
+    border-radius: 4px;
+    /* Lekko zaokrąglone rogi */
+}
+
+.about-text {
+    padding: 0;
+    /* Usunięto zbędny padding w układzie kolumnowym */
+    text-align: justify;
+    /* Wyjustowany tekst */
+    text-align-last: center;
+    /* Ostatnia linia wyśrodkowana (opcjonalnie, dla lepszego wyglądu akapitów) */
+}
+
+.about-text::before {
+    display: none;
+    /* Ukryj pseudo-element (nie używany) */
+}
+
+.lead-text {
+    font-size: 1.5rem;
+    /* Większy tekst wprowadzający (27px) */
+    font-weight: 600;
+    /* Semi-bold */
+    color: var(--color-blue);
+    /* Niebieski */
+    margin-bottom: var(--spacing-lg);
+    /* Odstęp pod tekstem (64px) */
+    line-height: 1.6;
+    /* Odstęp między liniami */
+}
+
+.about-text p {
+    margin-bottom: var(--spacing-md);
+    /* Odstęp między paragrafami (32px) */
+    color: var(--color-gray-dark);
+    /* Ciemnoszary */
+    font-size: 1.1rem;
+    /* Trochę większy tekst (19.8px) */
+    line-height: 1.8;
+    /* Odstęp między liniami */
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
+    /* Ostatni paragraf bez marginesu na dole */
+}
+
+/* ========================================
+   Details Section - Horizontal Layouts (Sekcja szczegółów - poziome układy)
+   ======================================== */
+.details-section {
+    padding: var(--spacing-md) 0;
+    /* Padding: 160px góra/dół */
+    background: var(--color-gray-light);
+    /* Jasnoszare tło */
+}
+
+.details-grid {
+    display: grid;
+    /* CSS Grid - 3 kolumny obok siebie */
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 równe kolumny (Location, Price) */
+    gap: var(--spacing-md);
+    /* Odstęp między kartami (64px) */
+    margin-top: var(--spacing-md);
+    /* Odstęp nad gridem (96px) */
+}
+
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    align-items: center;
+    justify-items: center;
+}
+
+.detail-card {
+    background: transparent;
+    /* Przezroczyste tło zamiast białego */
+    padding: var(--spacing-md) var(--spacing-md);
+    /* Mniejszy padding po bokach */
+    display: flex;
+    /* Flexbox do układania ikony i tekstu */
+    flex-direction: column;
+    /* Ikona nad tekstem */
+    align-items: center;
+    /* Wyśrodkuj w poziomie */
+    text-align: center;
+    /* Wyśrodkuj tekst */
+    gap: var(--spacing-md);
+    /* Większy odstęp między ikoną a tekstem (64px) */
+    transition: all var(--transition-medium);
+    /* Płynne animacje */
+    border: none;
+    /* Bez obramówki */
+    box-shadow: none;
+    /* Bez cienia */
+    border-radius: 0;
+    /* Bez zaokrągleń */
+}
+
+.detail-card::before {
+    display: none;
+    /* Ukryj pseudo-element */
+}
+
+
+.detail-content {
+    display: flex;
+    /* Flexbox */
+    flex-direction: column;
+    /* Elementy w kolumnie */
+}
+
+.detail-card h3 {
+    font-size: 1.4rem;
+    /* Rozmiar tytułu karty - mniejszy */
+    font-weight: 700;
+    /* Pogrubienie */
+    margin-bottom: 0.5rem;
+    /* Odstęp pod tytułem */
+    color: var(--slavic-blue);
+    /* Ciemny niebieski */
+    text-transform: uppercase;
+    /* WIELKIE LITERY */
+    letter-spacing: 0.5px;
+    /* Lekko rozstrzelone */
+}
+
+.tbc {
+    font-size: 1.1rem;
+    /* Rozmiar tekstu "Soon announced" */
+    color: #000000;
+    /* Szary kolor */
+    font-style: italic;
+    /* Kursywa */
+    font-weight: 500;
+    /* Semi-bold */
+    letter-spacing: 0.5px;
+    /* Lekko rozstrzelone litery */
+}
+
+
+
+.registration-content {
+    display: flex;
+    /* Flexbox */
+    flex-direction: column;
+    /* Elementy w kolumnie */
+    gap: var(--spacing-xl);
+    /* Odstęp między elementami (96px) */
+    width: 100%;
+    max-width: 100%;
+    /* Maksymalna szerokość */
+    margin: 0 auto;
+    /* Wyśrodkowanie */
+}
+
+.registration-status {
+    text-align: center;
+    /* Wyśrodkuj tekst */
+    padding: var(--spacing-md);
+    /* Padding wokół (96px) */
+    background: var(--color-gray-light);
+    /* Jasnoszare tło */
+
+}
+
+.registration-status h3 {
+    font-size: 2rem;
+    /* Duży tytuł (36px) */
+    font-weight: 700;
+    /* Pogrubienie */
+    color: var(--color-blue);
+    /* Niebieski */
+    margin-bottom: var(--spacing-md);
+    /* Odstęp pod tytułem (32px) */
+}
+
+.registration-status p {
+    font-size: 1.2rem;
+    /* Większy tekst (21.6px) */
+    color: var(--color-gray-dark);
+    /* Ciemnoszary */
+    line-height: 1.6;
+    /* Odstęp między liniami */
+}
+
+.footer {
+    background: #2e3192;
+    /* Niebieskie tło */
+    color: var(--color-white);
+    /* Biały tekst */
+    padding: 1.5rem 0 1rem;
+    /* Zmniejszony padding (kompaktowy footer) */
+}
+
+.footer-email-link {
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--color-white);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    margin: 1.5rem 0;
+    transition: opacity 0.3s;
+}
+
+.footer-email-link:hover {
+    opacity: 0.8;
+}
+
+.footer-content {
+    display: grid;
+    /* CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Automatyczne kolumny, minimum 250px */
+    gap: var(--spacing-xl);
+    /* Odstęp między kolumnami (96px) */
+    margin-bottom: var(--spacing-lg);
+    /* Odstęp pod contentem (64px) */
+}
+
+.footer-logo h3 {
+    font-size: 1.5rem;
+    /* Rozmiar tytułu logo */
+    font-weight: 700;
+    /* Pogrubienie */
+    margin-bottom: 0.5rem;
+    /* Odstęp pod tytułem (9px) */
+}
+
+.footer-logo p {
+    opacity: 0.7;
+    /* 70% przezroczystości (jaśniejszy tekst) */
+    line-height: 1.6;
+    /* Odstęp między liniami */
+}
+
+.footer-links h4,
+.footer-contact h4 {
+    font-size: 1.2rem;
+    /* Rozmiar podtytułów */
+    font-weight: 700;
+    /* Pogrubienie */
+    margin-bottom: var(--spacing-sm);
+    /* Odstęp pod tytułem (16px) */
+}
+
+.footer-links ul {
+    list-style: none;
+    /* Usuń kropki */
+}
+
+.footer-links a {
+    color: var(--color-white);
+    /* Biały tekst linku */
+    text-decoration: none;
+    /* Bez podkreślenia */
+    opacity: 0.7;
+    /* 70% opacity (jaśniejszy) */
+    transition: all var(--transition-fast);
+    /* Płynne animacje */
+    display: inline-block;
+    /* Inline-block pozwala na transform */
+    padding: 0.3rem 0;
+    /* Padding góra/dół (5.4px) */
+}
+
+.footer-links a:hover {
+    opacity: 1;
+    /* Przy hover: pełna opacity (100% = jasniejszy) */
+    transform: translateX(5px);
+    /* Przy hover: przesuń 5px w prawo */
+}
+
+.contact-text {
+    opacity: 0.7;
+    /* 70% przezroczystości */
+    margin-bottom: var(--spacing-md);
+    /* Odstęp pod tekstem */
+}
+
+.social-links {
+    display: flex;
+    /* Flexbox - ikony obok siebie */
+    gap: var(--spacing-sm);
+    /* Odstęp między ikonami (16px) */
+    margin-top: var(--spacing-md);
+    /* Odstęp nad linkami */
+}
+
+.social-link {
+    width: 44px;
+    /* Szerokość przycisku */
+    height: 44px;
+    /* Wysokość przycisku */
+    display: flex;
+    /* Flexbox do centrowania ikony */
+    align-items: center;
+    /* Wyśrodkuj w pionie */
+    justify-content: center;
+    /* Wyśrodkuj w poziomie */
+    background: rgba(255, 255, 255, 0.1);
+    /* Delikatne białe tło */
+    border-radius: 50%;
+    /* Okrągły kształt */
+    color: var(--color-white);
+    /* Biały kolor ikony */
+    transition: all var(--transition-medium);
+    /* Płynne animacje */
+    text-decoration: none;
+    /* Bez podkreślenia */
+}
+
+.social-link:hover {
+    background: var(--color-blue);
+    /* Niebieski przy hover */
+    transform: translateY(-3px);
+    /* Przesuń w górę */
+    box-shadow: 0 4px 12px rgba(46, 49, 146, 0.3);
+    /* Cień przy hover */
+}
+
+.social-link svg {
+    width: 20px;
+    /* Szerokość ikony SVG */
+    height: 20px;
+    /* Wysokość ikony SVG */
+}
+
+.footer-bottom {
+    text-align: center;
+    /* Wyśrodkuj tekst */
+    padding-top: var(--spacing-md);
+    /* Padding nad (32px) */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    /* Cienka linia nad (10% białego) */
+    opacity: 0.6;
+    /* 60% opacity (delikatny tekst copyright) */
+}
+
+/* ========================================
+   Responsive Design (Design responsywny - dopasowanie do mobile)
+   ======================================== */
+@media (max-width: 1024px) {
+
+    /* Dla ekranów mniejszych niż 1024px (tablety) */
+    .about-content {
+        grid-template-columns: 1fr;
+        /* Jedna kolumna zamiast dwóch (zdjęcie nad tekstem) */
+        gap: var(--spacing-lg);
+        /* Mniejszy odstęp (64px) */
+    }
+
+    .about-image {
+        height: 400px;
+        /* Niższe zdjęcie na tabletach */
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Dla ekranów mniejszych niż 768px (telefony) */
+    :root {
+        --spacing-lg: 2rem;
+        /* Mniejsze odstępy na mobile */
+        --spacing-xl: 3rem;
+        --spacing-xxl: 4rem;
+        --spacing-xxxl: 5rem;
+    }
+
+    body {
+        font-size: 16px;
+        /* Mniejszy bazowy font na mobile */
+    }
+
+    .hamburger {
+        display: flex;
+        /* Pokaż hamburger menu na mobile */
+    }
+
+    .nav-container {
+        height: 50px;
+        /* Wymuszona mniejsza wysokość paska na mobile */
+        padding: 0 var(--spacing-sm);
+        /* Reset paddingu */
+    }
+
+    .nav-menu {
+        position: fixed;
+        /* Menu przyklejone */
+        top: 50px;
+        /* Pod navbarem (50px) */
+        left: -100%;
+        /* Początkowo schowane za lewą krawędzią */
+        width: 100%;
+        /* Pełna szerokość */
+        background: rgba(255, 255, 255, 0.98);
+        /* Białe tło */
+        flex-direction: column;
+        /* Linki w kolumnie */
+        padding: var(--spacing-md);
+        /* Padding (32px) */
+        box-shadow: var(--shadow-md);
+        /* Cień */
+        transition: left var(--transition-medium);
+        /* Płynne wysuwanie */
+    }
+
+    .nav-menu.active {
+        left: 0;
+        /* Gdy aktywne: wysuń na ekran */
+    }
+
+    .hero {
+        min-height: 80vh;
+        /* Niższy hero na mobile (80% wysokości ekranu) */
+        padding: var(--spacing-xl) 0;
+        /* Mniejszy padding (96px góra/dół) */
+    }
+
+    .hero-title {
+        letter-spacing: -2px;
+        /* Zbliżone litery */
+    }
+
+    .hero-logo {
+        width: 100px;
+        /* Mniejsze logo na mobile */
+        height: 100px;
+    }
+
+    .countdown {
+        gap: var(--spacing-sm);
+        /* Mniejszy odstęp na mobile (16px) */
+    }
+
+    .countdown-number {
+        font-size: clamp(2rem, 8vw, 3rem);
+        /* Mniejsze liczby na mobile */
+    }
+
+    .countdown-separator {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        /* Mniejszy separator */
+    }
+
+    .section-label {
+        display: none;
+        /* Ukryj pionowe etykiety na mobile */
+    }
+
+    .about-content {
+        padding: 0 var(--spacing-md);
+        /* Mniejszy padding */
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+        /* Jedna kolumna na mobile (karty pod sobą) */
+    }
+
+    .detail-icon {
+        margin: 0 auto;
+        /* Wyśrodkuj ikonę (redundantne ale dla pewności) */
+    }
+
+    .partners-grid {
+        grid-template-columns: 1fr;
+        /* Jedna kolumna partnerów (jeden pod drugim) */
+    }
+
+    .edition-stats {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 kolumny na mobile zamiast 4 */
+    }
+
+    .stat-number {
+        font-size: 3rem;
+        /* Mniejsze liczby na mobile */
+    }
+
+    .edition-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 zdjęcia obok siebie na mobile */
+    }
+
+    .organizer-card {
+        grid-template-columns: 1fr;
+        /* Jedna kolumna - logo nad tekstem */
+        text-align: center;
+        /* Wyśrodkuj tekst */
+    }
+
+    .organizer-image {
+        margin: 0 auto;
+        /* Wyśrodkuj logo */
+    }
+
+    .registration-status,
+    .registration-form-placeholder {
+        padding: var(--spacing-lg);
+        /* Mniejszy padding na mobile (64px) */
+    }
+
+    .registration-form-placeholder {
+        min-height: 200px;
+        /* Niższy placeholder na mobile */
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        /* Jedna kolumna w stopce */
+        text-align: center;
+        /* Wyśrodkuj tekst */
+    }
+
+    .social-links {
+        justify-content: center;
+        /* Wyśrodkuj ikony social media */
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Dla bardzo małych ekranów (małe telefony) */
+    .container {
+        padding: 0 var(--spacing-md);
+        /* Jeszcze mniejszy padding */
+    }
+
+    .nav-container {
+        padding: 1.5rem var(--spacing-md);
+        /* Mniejszy padding navbar */
+    }
+
+    .cta-button {
+        padding: 1rem 2rem;
+        /* Mniejszy przycisk */
+        font-size: 0.9rem;
+        /* Mniejszy tekst przycisku */
+    }
+
+    .partner-info-card,
+    .current-partners {
+        padding: var(--spacing-lg) var(--spacing-md);
+        /* Mniejszy padding */
+    }
+}
+
+/* ========================================
+   Utility Classes (Klasy narzędziowe)
+   ======================================== */
+.fade-in {
+    opacity: 0;
+    /* Początkowo niewidoczne */
+    animation: fadeIn 1s ease forwards;
+    /* Animacja pojawienia się (1 sekunda) */
+}
+
+@keyframes fadeIn {
+
+    /* Definicja animacji fadeIn */
+    to {
+        /* Końcowy stan */
+        opacity: 1;
+        /* Pełna widoczność */
+    }
+}
+
+/* ========================================
+   Folder Component
+   ======================================== */
+.folders-container {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    /* Większe odstępy między folderami */
+    margin-top: var(--spacing-xl);
+    /* Obniżenie folderów - większy odstęp od tekstu wyżej */
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.folder-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    /* Odstęp między folderem a podpisem */
+}
+
+.folder-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    /* Mniejsza czcionka niż tekst (zwykle 1rem) */
+    font-weight: 700;
+    /* Pogrubiona */
+    color: var(--slavic-blue);
+    /* Ciemny niebieski ESN */
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+
+.folder {
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+    width: 100px;
+    /* Dodane dla layoutu */
+    height: 80px;
+    /* Dodane dla layoutu */
+    position: relative;
+    /* Ważne */
+}
+
+.folder:not(.folder--click):hover {
+    transform: translateY(-8px);
+}
+
+.folder:not(.folder--click):hover .paper {
+    transform: translate(-50%, 0%);
+}
+
+.folder:not(.folder--click):hover .folder__front {
+    transform: skew(15deg) scaleY(0.6);
+}
+
+.folder:not(.folder--click):hover .right {
+    transform: skew(-15deg) scaleY(0.6);
+}
+
+.folder.open {
+    transform: translateY(-8px);
+}
+
+.folder.open .paper:nth-child(1) {
+    transform: translate(-120%, -70%) rotateZ(-15deg);
+}
+
+.folder.open .paper:nth-child(1):hover {
+    transform: translate(-120%, -70%) rotateZ(-15deg) scale(1.1);
+}
+
+.folder.open .paper:nth-child(2) {
+    transform: translate(10%, -70%) rotateZ(15deg);
+    height: 80%;
+}
+
+.folder.open .paper:nth-child(2):hover {
+    transform: translate(10%, -70%) rotateZ(15deg) scale(1.1);
+}
+
+.folder.open .paper:nth-child(3) {
+    transform: translate(-50%, -100%) rotateZ(5deg);
+    height: 80%;
+}
+
+.folder.open .paper:nth-child(3):hover {
+    transform: translate(-50%, -100%) rotateZ(5deg) scale(1.1);
+}
+
+.folder.open .folder__front {
+    transform: skew(15deg) scaleY(0.6);
+}
+
+.folder.open .right {
+    transform: skew(-15deg) scaleY(0.6);
+}
+
+.folder__back {
+    position: relative;
+    width: 100px;
+    height: 80px;
+    background: var(--folder-back-color);
+    border-radius: 0px 10px 10px 10px;
+}
+
+.folder__back::after {
+    position: absolute;
+    z-index: 0;
+    bottom: 98%;
+    left: 0;
+    content: '';
+    width: 30px;
+    height: 10px;
+    background: var(--folder-back-color);
+    border-radius: 5px 5px 0 0;
+}
+
+.paper {
+    position: absolute;
+    z-index: 2;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, 10%);
+    width: 70%;
+    height: 80%;
+    background: var(--paper-1);
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.paper:nth-child(2) {
+    background: var(--paper-2);
+    width: 80%;
+    height: 70%;
+}
+
+.paper:nth-child(3) {
+    background: var(--paper-3);
+    width: 90%;
+    height: 60%;
+}
+
+.folder__front {
+    position: absolute;
+    z-index: 5;
+    /* Wyższy niż paper */
+    width: 100%;
+    height: 100%;
+    background: var(--folder-color);
+    border-radius: 5px 10px 10px 10px;
+    transform-origin: bottom;
+    transition: all 0.3s ease-in-out;
+}
+
+.right {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    background: var(--folder-color);
+    border-radius: 5px 10px 10px 10px;
+    transform-origin: bottom;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Lightbox Styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+.folder-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: zoom-in;
+}
+
+
+
+.folder__front.right {
+    /* Jeśli right ma inne właściwości startowe? */
+    /* Bazując na CSS użytkownika, .right tylko transformuje się inaczej. */
+    z-index: 4;
+    /* Może wyżej? */
+    opacity: 0;
+    /* Ukryte domyślnie? */
+    /* Nie, użytkownik nie dał opacity. */
+    /* Może to literówka w CSS użytkownika? */
+    /* "scaleY(0.6)" sugeruje pochylenie. */
+    /* Skoro nie mam pewności co to .right, pominę to w HTML chyba że to kluczowe. */
+    /* Ale transformacje są różne (15deg vs -15deg). */
+    /* Może folder otwiera się jak książka? */
+    /* Dodam <div class="right"></div> w HTML na wszelki wypadek, z klasą folder__front też? */
+    /* Nie, .right to oddzielna klasa w selektorze. */
+}
+
+/* ========================================
+   Split Section (Details + Registration)
+   ======================================== */
+.split-sections-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    /* Details szersze */
+    gap: var(--spacing-xl);
+    align-items: stretch;
+    /* Rozciągnij kolumny do równej wysokości */
+    position: relative;
+}
+
+/* Ozdobna linia oddzielająca (border na lewej kolumnie) */
+.details-part {
+    border-right: 2px solid rgba(0, 0, 0, 0.05);
+    /* Delikatna linia */
+    padding-right: var(--spacing-xl);
+    /* Odstęp od linii */
+}
+
+.registration-part {
+    display: flex;
+    flex-direction: column;
+    padding-left: var(--spacing-md);
+}
+
+/* Na mniejszych ekranach jeden pod drugim */
+@media (max-width: 900px) {
+    .split-sections-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .details-part {
+        border-right: none;
+        padding-right: 0;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+        padding-bottom: var(--spacing-lg);
+    }
+
+    .registration-part {
+        padding-left: 0;
+    }
+}
+
+/* Wewnątrz kolumny Details */
+.split-sections-grid .details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Dwie kolumny wewnątrz details (jak było wcześniej w details-grid) */
+    gap: var(--spacing-lg);
+}
+
+@media (max-width: 600px) {
+    .split-sections-grid .details-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+.split-sections-grid .section-header {
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+    /* Tytuły wyśrodkowane w swoich kolumnach */
+}
+
+.split-sections-grid .section-title {
+    font-size: 2.5rem;
+    color: var(--slavic-blue);
+}
+
+/* Registration Box - Ładniejszy wygląd */
+.registration-content {
+    background: #f8f9fa;
+    /* Bardzo jasny szary */
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden;
+    flex-grow: 1;
+    /* Wypełnij wysokość */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    height: 800px;
+    /* Stała wysokość dla przewijania */
+}
+
+.registration-content iframe {
+    width: 100%;
+    height: 100%;
+    /* Iframe wypełnia 800px kontenera */
+    border: none;
+    display: block;
+}
+
+.registration-status h3 {
+    margin-bottom: 0.5rem;
+    font-family: var(--font-header);
+    color: var(--slavic-orange);
+    font-size: 2rem;
+}
+
+/* Ukrywamy pusty padding w registration-column jeśli był */
+.registration-column {
+    padding: 0;
+}
+
+/* Nowy styl stopki - Social Icons w kółeczkach */
+.footer-contact-info {
+    text-align: left;
+}
+
+.social-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    color: var(--color-white) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.social-circle:hover {
+    background: var(--color-white);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: var(--slavic-blue) !important;
+}
+
+.social-circle svg {
+    transition: stroke 0.3s ease;
+}
+
+.social-circle:hover svg {
+    stroke: var(--slavic-blue);
+}
+
+/* Footer matching Hero aesthetics */
+.footer h3 {
+    font-family: 'Oswald', sans-serif !important;
+    text-transform: uppercase;
+    font-weight: 500 !important;
+    letter-spacing: 1px !important;
+}
+
+.footer-email-link {
+    color: white !important;
+    /* White text */
+    font-family: 'Oswald', sans-serif !important;
+    font-size: 1.1rem !important;
+    /* Smaller font */
+    font-weight: 400 !important;
+    letter-spacing: 1px;
+}
+
+.footer .social-circle:hover {
+    color: #f47b20 !important;
+    /* Orange hover icon */
+    background: white;
+}
+
+.footer .social-circle:hover svg {
+    stroke: #f47b20 !important;
+}
+
+/* Included Box Styles */
+.included-box {
+    margin-top: 1rem;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.included-box-title {
+    color: var(--slavic-blue);
+    /* Niebieski */
+    font-size: 1.1rem;
+    /* Mniejszy tytuł */
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.included-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    /* Małe odstępy */
+    font-size: 0.9rem;
+    /* Mniejsza czcionka listy */
+    color: var(--color-gray-dark);
+    align-items: center;
+    /* Wyśrodkowanie elementów listy */
+}
+
+.included-item-small {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    /* Wyśrodkowanie */
+}
+
+.bullet {
+    color: var(--slavic-blue);
+    /* Niebieska kropka */
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+/* ========================================
+   FAQ Section
+   ======================================== */
+.faq-section {
+    padding: 60px 0;
+    background: var(--color-gray-light);
+}
+
+.faq-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.faq-item {
+    background: var(--color-white);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 1.5rem;
+    background: none;
+    border: none;
+    text-align: left;
+    font-family: var(--font-primary);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-blue);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+    gap: 1rem;
+}
+
+.faq-question:hover {
+    background: rgba(46, 49, 146, 0.03);
+}
+
+.faq-icon {
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--color-orange);
+    transition: transform 0.3s ease;
+    line-height: 1;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+    color: var(--color-magenta);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease, opacity 0.3s ease;
+    padding: 0 1rem;
+    opacity: 0;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 1000px;
+    /* Large enough to fit content */
+    padding: 1.5rem 1rem;
+    /* Equal top and bottom padding */
+    opacity: 1;
+}
+
+.faq-answer p {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    color: var(--color-gray-dark);
+    line-height: 1.6;
+}
+
+.faq-answer ul {
+    margin-bottom: 1rem;
+    padding-left: 1.2rem;
+}
+
+.faq-answer li {
+    margin-bottom: 0.3rem;
+    color: var(--color-gray-dark);
+}

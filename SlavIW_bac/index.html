@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wild West Integration Weekend</title>
+    <link rel="icon" href="iw_black.png" type="image/png">
+    <meta name="description"
+        content="An exceptional event bringing together people from different cultures in an atmosphere of friendship, cultural exchange, and shared fun.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400;700;900&family=Oswald:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about" class="nav-link active">ABOUT</a></li>
+                <li><a href="#details" class="nav-link">DETAILS</a></li>
+                <li><a href="#registration" class="nav-link">REGISTRATION</a></li>
+                <li><a href="#organiser" class="nav-link">ORGANISER</a></li>
+                <li><a href="#partners" class="nav-link">PARTNERS</a></li>
+                <li><a href="#contact" class="nav-link">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content fade-in">
+            <div class="hero-header">
+                <div class="logos-container">
+                    <img src="PL-eye_lodz-logo-colour.png" alt="ESN EYE Lodz Logo" class="esn-logo">
+                    <img src="iw_black.png" alt="Integration Weekend Logo" class="hero-logo">
+                </div>
+                <h1 class="hero-title">
+                    <span class="text-orange">Wild West</span>
+                    <span class="text-blue">Integration Wekend</span>
+                </h1>
+            </div>
+
+            <div class="event-date">
+                16 - 18 October 2026
+            </div>
+
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">0</div>
+                    <div class="countdown-label">DAYS</div>
+                </div>
+                <div class="countdown-separator">/</div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">0</div>
+                    <div class="countdown-label">HOURS</div>
+                </div>
+                <div class="countdown-separator">/</div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">0</div>
+                    <div class="countdown-label">MINUTES</div>
+                </div>
+                <div class="countdown-separator">/</div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">0</div>
+                    <div class="countdown-label">SECONDS</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <!-- Title -->
+                <h2 class="section-title">WHAT IS INTEGRATION WEEKEND?</h2>
+
+                <!-- Text Content -->
+                <div class="about-text">
+                    <p class="lead-text">
+                        Integration Weekend is a three-day trip where your Erasmus really begins.
+                    </p>
+                    <p>
+                        We’ve been organising Integration Weekends since 2010 - and this year’s
+                        Wild West edition is our 30th. Over the years, we’ve welcomed
+                        hundreds
+                        of international students and helped them start their semester in the best possible way!
+                    </p>
+                    <p>
+                        It’s all about meeting new people, building friendships, and feeling part of an international
+                        community from the beginning of your Erasmus. Through team activities, the wildest parties,
+                        and a lot of shared laughs, you’ll connect with students from all over the world
+                        in a relaxed and welcoming atmosphere.
+                    </p>
+                </div>
+
+                <!-- Folders Container (Moved to bottom) -->
+                <div class="folder-label" style="color: #2e3192; margin-top: 3rem; margin-bottom: 2rem; width: 100%;">
+                    RECENT PREVIOUS EDITIONS:</div>
+                <div class="folders-container" style="margin-top: 0;">
+                    <!-- Folder 1 + Label -->
+                    <div class="folder-wrapper">
+                        <div class="folder" onclick="toggleFolder(this)">
+                            <div class="folder__back">
+                                <div class="paper"><img src="sh1.jpg" class="folder-img" alt="Photo 1"
+                                        onclick="openLightbox(this.src); event.stopPropagation();"></div>
+                                <div class="paper"><img src="sh2.jpg" class="folder-img" alt="Photo 2"
+                                        onclick="openLightbox(this.src); event.stopPropagation();"></div>
+                                <div class="paper"><img src="sh3.jpg" class="folder-img" alt="Photo 3"
+                                        onclick="openLightbox(this.src); event.stopPropagation();"></div>
+                                <div class="folder__front"></div>
+                                <div class="folder__front right"></div>
+                            </div>
+                        </div>
+                        <div class="folder-label" style="color: #7ac143;">SHREK</div>
+                    </div>
+
+                    <!-- Folder 2 + Label -->
+                    <div class="folder-wrapper">
+                        <div class="folder" onclick="toggleFolder(this)">
+                            <div class="folder__back">
+                                <div class="paper"><img src="od1.jpg" class="folder-img" alt="Photo 4"
+                                        onclick="openLightbox(this.src); event.stopPropagation();"></div>
+                                <div class="paper"><img src="od2.jpg" class="folder-img" alt="Photo 5"
+                                        onclick="openLightbox(this.src); event.stopPropagation();"></div>
+                                <div class="paper"><img src="od3.jpg" class="folder-img" alt="Photo 6"
+                                        onclick="openLightbox(this.src); event.stopPropagation();"></div>
+                                <div class="folder__front"></div>
+                                <div class="folder__front right"></div>
+                            </div>
+                        </div>
+                        <div class="folder-label" style="color: #00aeef;">ODYSSEY</div>
+                    </div>
+
+                    <!-- Folder 3 + Label -->
+                    <div class="folder-wrapper">
+                        <div class="folder" onclick="toggleFolder(this)">
+                            <div class="folder__back">
+                                <div class="paper"><img src="er1.jpg" class="folder-img" alt="Photo 7"
+                                        onclick="openLightbox(this.src); event.stopPropagation();"></div>
+                                <div class="paper"><img src="er3.jpg" class="folder-img" alt="Photo 8"
+                                        onclick="openLightbox(this.src); event.stopPropagation();"></div>
+                                <div class="paper"><img src="ew2.jpg" class="folder-img" alt="Photo 9"
+                                        onclick="openLightbox(this.src); event.stopPropagation();"></div>
+                                <div class="folder__front"></div>
+                                <div class="folder__front right"></div>
+                            </div>
+                        </div>
+                        <div class="folder-label" style="color: #ec008c;">ERASMUSLAND</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lightbox Modal -->
+            <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+                <span class="close-lightbox">&times;</span>
+                <img class="lightbox-content" id="lightbox-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Details & Registration Split Section -->
+    <section id="details" class="details-section">
+        <div class="container">
+            <div class="split-sections-grid">
+
+                <!-- Left Column: Event Details -->
+                <div class="split-column details-part">
+                    <div class="section-header">
+                        <h2 class="section-title">EVENT DETAILS</h2>
+                    </div>
+
+                    <div class="details-grid">
+                        <!-- Left Sub-Column: Location + Date -->
+                        <div class="details-column">
+                            <div class="detail-card">
+
+                                <div class="detail-content"
+                                    style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+                                    <h3>Location</h3>
+                                    <p>Marysienka Resort</p>
+                                    <p class="location-detail">Topornia 23</p>
+
+                                    <!-- Google Map (Square) -->
+                                    <div class="map-container"
+                                        style="margin-top: 1rem; width: 100%; max-width: 300px; aspect-ratio: 1 / 1; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                                        <iframe width="100%" height="100%" frameborder="0" style="border:0"
+                                            src="https://maps.google.com/maps?q=Ośrodek+Wypoczynkowy+Marysieńka+Topornia&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Event Date removed as per request -->
+                        </div>
+
+                        <!-- Right Sub-Column: Price + What's Included -->
+                        <div class="details-column">
+                            <div class="detail-card">
+
+                                <div class="detail-content">
+                                    <h3>Price</h3>
+                                    <p class="tbc">450 PLN with ESNcard</p>
+                                    <p class="tbc">525 PLN without ESNcard</p>
+                                </div>
+                            </div>
+
+                            <!-- What's Included in right column -->
+                            <div class="included-box">
+                                <h4 class="included-box-title">In the package</h4>
+                                <div class="included-list">
+                                    <div class="included-item-small">
+                                        <span class="bullet">•</span>
+                                        <span>Transport</span>
+                                    </div>
+                                    <div class="included-item-small">
+                                        <span class="bullet">•</span>
+                                        <span>Accommodation</span>
+                                    </div>
+                                    <div class="included-item-small">
+                                        <span class="bullet">•</span>
+                                        <span>Meals</span>
+                                    </div>
+                                    <div class="included-item-small">
+                                        <span class="bullet">•</span>
+                                        <span>Welcome Pack</span>
+                                    </div>
+                                    <div class="included-item-small">
+                                        <span class="bullet">•</span>
+                                        <span>All Activities</span>
+                                    </div>
+                                    <div class="included-item-small">
+                                        <span class="bullet">•</span>
+                                        <span>Competitions with prizes</span>
+                                    </div>
+                                    <div class="included-item-small">
+                                        <span class="bullet">•</span>
+                                        <span>2 parties</span>
+                                    </div>
+                                    <div class="included-item-small">
+                                        <span class="bullet">•</span>
+                                        <span>Photobooth</span>
+                                    </div>
+                                    <div class="included-item-small">
+                                        <span class="bullet">•</span>
+                                        <span>Music Quiz</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Registration -->
+                <div id="registration" class="split-column registration-part registration-column">
+                    <div class="section-header">
+                        <h2 class="section-title">REGISTRATION</h2>
+                    </div>
+
+                    <div class="registration-content">
+                        <iframe
+                            src="https://docs.google.com/forms/d/e/1FAIpQLSefTNmSz0eVFty7GRQYcd4V407aLti_1K4K4kmmWOmfzmFVpg/viewform?embedded=true"
+                            width="100%" height="5145" frameborder="0" marginheight="0" marginwidth="0">Ładuję…</iframe>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Organizers & Partners Section -->
+    <section id="organizers-partners" class="details-section" style="background: var(--color-white);">
+        <div class="container">
+            <div class="split-sections-grid">
+
+                <!-- Left Column: Organizers -->
+                <div id="organiser" class="split-column details-part">
+                    <div class="section-header">
+                        <h2 class="section-title">ORGANISER</h2>
+                    </div>
+                    <div class="organizer-content-wrapper" style="text-align: center;">
+                        <p style="text-align: justify; line-height: 1.6;">
+                            ESN-EYE Łódź (Erasmus Student Network - European Youth Exchange) is a non-profit student
+                            organisation dedicated to fostering cultural exchange and integration through a variety of
+                            projects for both international and local student communities. Based at Lodz University of
+                            Technology, we are part of the broader Erasmus Student Network, which spans 44 countries and
+                            includes over 515 local sections with more than 15 000 volunteers.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Column: Partners -->
+                <div id="partners" class="split-column registration-part">
+                    <div class="section-header" style="margin-bottom: 1rem;">
+                        <h2 class="section-title">PARTNERS</h2>
+                        <p
+                            style="font-size: 0.9rem; color: #666; font-style: italic; margin-top: 0.5rem; text-align: center;">
+                            (click on logo to visit their website)</p>
+                    </div>
+                    <div class="partners-content">
+                        <!-- Tutaj dodaj loga partnerów -->
+                        <div class="partners-grid">
+
+                            <!-- Przykład 1 -->
+                            <a href="https://www.ife.p.lodz.pl/" target="_blank" class="partner-link">
+                                <img src="partner1.png" alt="Partner 1" class="partner-logo"
+                                    style="max-width: 150px; max-height: 100px; object-fit: contain;">
+                            </a>
+
+                            <!-- Przykład 2 -->
+                            <a href="https://p.lodz.pl/" target="_blank" class="partner-link">
+                                <img src="partner4.png" alt="Partner 2" class="partner-logo"
+                                    style="max-width: 150px; max-height: 100px; object-fit: contain;">
+                            </a>
+
+                            <!-- Przykład 3 -->
+                            <a href="https://tkalniazagadek.pl/" target="_blank" class="partner-link">
+                                <img src="partner3.png" alt="Partner 3" class="partner-logo"
+                                    style="max-width: 150px; max-height: 100px; object-fit: contain;">
+                            </a>
+
+                            <!-- Przykład 4 -->
+                            <a href="https://www.facebook.com/finestrapizzeria/?locale=pl_PL" target="_blank"
+                                class="partner-link">
+                                <img src="partner5.png" alt="Partner 4" class="partner-logo"
+                                    style="max-width: 150px; max-height: 100px; object-fit: contain;">
+                            </a>
+
+                            <!-- Przykład 5 -->
+                            <a href="https://www.facebook.com/p/Indeks-kawiarnia-bar-100057157821869/" target="_blank"
+                                class="partner-link">
+                                <img src="partner2.png" alt="Partner 5" class="partner-logo"
+                                    style="max-width: 150px; max-height: 100px; object-fit: contain;">
+                            </a>
+
+                            <!-- Partner 6 -->
+                            <a href="https://uml.lodz.pl/" target="_blank" class="partner-link">
+                                <img src="partner6.png" alt="Partner 6"
+                                    class="partner-logo"
+                                    style="max-width: 150px; max-height: 100px; object-fit: contain;">
+                            </a>
+
+                            <!-- Partner 7 -->
+                            <a href="https://purohotels.com/en/" target="_blank" class="partner-link">
+                                <img src="PARTNER7.png" alt="Partner 7"
+                                    class="partner-logo"
+                                    style="max-width: 150px; max-height: 100px; object-fit: contain;">
+                            </a>
+
+                            <!-- Partner 8 -->
+                            <a href="https://krolkul.pl/" target="_blank" class="partner-link">
+                                <img src="partner8.png" alt="Partner 8"
+                                    class="partner-logo"
+                                    style="max-width: 150px; max-height: 100px; object-fit: contain;">
+                            </a>
+
+                            <!-- Partner 9 -->
+                            <a href="https://www.hoteltobaco.pl/" target="_blank" class="partner-link">
+                                <img src="partner9.png" alt="Partner 9"
+                                    class="partner-logo"
+                                    style="max-width: 150px; max-height: 100px; object-fit: contain;">
+                            </a>
+
+                            <!-- Partner 10 -->
+                            <a href="https://www.facebook.com/herbaciarniakocieoczy/?locale=pl_PL" target="_blank" class="partner-link">
+                                <img src="partner10.png" alt="Partner 10"
+                                    class="partner-logo"
+                                    style="max-width: 150px; max-height: 100px; object-fit: contain;">
+                            </a>
+                            <!-- Partner 11 -->
+                            <a href="https://www.prywatkaklub.pl/" target="_blank" class="partner-link">
+                                <img src="partner11.png" alt="Partner 10"
+                                    class="partner-logo"
+                                    style="max-width: 150px; max-height: 100px; object-fit: contain;">
+                            </a>
+    
+
+                        </div>
+                        <p
+                            style="text-align: center; font-size: 1rem; color: var(--slavic-blue); margin-top: 2rem; margin-bottom: 0; font-weight: 600; font-style: italic;">
+                            ... and that's not all</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section" style="background: var(--color-gray-light); padding: 60px 0;">
+        <div class="container" style="max-width: 800px;">
+            <div class="section-header">
+                <h2 class="section-title">FAQ</h2>
+            </div>
+
+            <div class="faq-accordion">
+                <!-- Question 1 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What should I take for the trip?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We recommend bringing:</p>
+                        <ul style="list-style-type: disc; margin-left: 20px;">
+                            <li>comfortable, warm clothes and shoes,</li>
+                            <li>personal hygiene items,</li>
+                            <li>a towel,</li>
+                            <li>any necessary medications,</li>
+                            <li>a good mood and openness to meet new people.</li>
+                        </ul>
+                        <p>More detailed information will be sent to participants before the trip.</p>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What is the programme?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The programme includes integration activities, team challenges, themed
+                            parties and time to relax and connect with other students.</p>
+                        <p>A more detailed timetable will be shared with registered participants before departure.</p>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        I’m vegan / vegetarian / I can’t consume lactose / gluten / nuts etc. Will this be taken into
+                        consideration?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. During registration, you will be asked about dietary restrictions and allergies. We do
+                            our best to accommodate different needs and ensure everyone has suitable meal options.</p>
+                        <p>Please make sure to clearly indicate your restrictions in the registration form.</p>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        I have a disability or special needs. Can I still participate?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Of course. Please inform us about your needs in the registration form or contact us directly.
+                            We will do our best to adjust the conditions and support you so that you can comfortably
+                            participate in the trip.</p>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        When and where do we leave? What time do we come back to Łódź?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Exact details (departure time, meeting point, and return time) will be sent to participants
+                            before the trip.</p>
+                        <p>Departure will take place from IFE around 4 PM, and we will return to the same place on Sunday
+                            around 4 PM.</p>
+                    </div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Am I required to take part in all activities?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Participation in activities is strongly encouraged, as the programme is designed as a full
+                            experience. However, you are not forced to take part in every single activity. If you need a
+                            break, you can skip selected parts.</p>
+                    </div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Will I receive a confirmation slip if I need to miss classes?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. If you need official confirmation of participation, we can provide a document confirming
+                            Your attendance at the Integration Weekend.</p>
+                        <p>Please note that acceptance of this document depends on your faculty and lecturer.</p>
+                    </div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        If I cannot attend after registering, will I receive a refund?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Please note that the participation fee is non-refundable.</p>
+                        <p>Refunds are only possible if the event is cancelled by the organisers. In other cases (e.g.
+                            personal reasons (change of plans, illness), we are unfortunately not able to return the
+                            payment due to prior bookings and organisational costs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer" style="text-align: center;">
+        <div class="container"
+            style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 3rem; padding: 0 1rem; text-align: center;">
+
+            <!-- Left Column: Contact Text -->
+            <div class="footer-contact-info" style="text-align: center;">
+                <h3 style="margin: 0; font-size: 1rem; font-weight: 500; line-height: 1.4; letter-spacing: 1px;">HAVE
+                    ANY QUESTIONS?<br><span style="font-weight: 400; font-size: 0.9rem; opacity: 0.9;">FEEL FREE TO
+                        CONTACT US!</span></h3>
+                <a href="mailto:integration.eye@esn.pl" class="footer-email-link"
+                    style="margin: 0.5rem 0 0; font-size: 1.1rem; display: block; font-weight: 400; text-decoration: none;">integration.eye@esn.pl</a>
+                <p style="margin: 0.5rem 0 0; font-size: 0.7rem; opacity: 0.4;">&copy; 2026 Wild West Integration Weekend.
+                </p>
+            </div>
+
+            <!-- Right Column: Social Icons -->
+            <div class="social-links" style="display: flex; gap: 1rem; margin: 0; justify-content: center;">
+                <a href="https://www.linkedin.com/company/esn-eye/posts/?feedView=all" target="_blank"
+                    class="social-circle" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect x="2" y="9" width="4" height="12" />
+                        <circle cx="4" cy="4" r="2" />
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/ESNEYElodz" target="_blank" class="social-circle"
+                    aria-label="Facebook">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/esneye/" target="_blank" class="social-circle"
+                    aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                </a>
+                <a href="https://www.tiktok.com/@esneyelodz" target="_blank" class="social-circle" aria-label="TikTok">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <script src="script.js"></script>
+</body>
+
+</html>

@@ -2,41 +2,27 @@
 // Countdown Timer
 // ========================================
 function updateCountdown() {
-    // Data wydarzenia: 16 października 2026, 00:00:00
     const eventDate = new Date('2026-10-16T00:00:00').getTime();
     const now = new Date().getTime();
     const distance = eventDate - now;
 
-    // Oblicz dni, godziny, minuty, sekundy
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Aktualizuj HTML
     const daysElement = document.getElementById('days');
     const hoursElement = document.getElementById('hours');
     const minutesElement = document.getElementById('minutes');
     const secondsElement = document.getElementById('seconds');
 
-    if (daysElement) daysElement.textContent = days;
-    if (hoursElement) hoursElement.textContent = hours;
-    if (minutesElement) minutesElement.textContent = minutes;
-    if (secondsElement) secondsElement.textContent = seconds;
-
-    // Jeśli countdown się skończył
-    if (distance < 0) {
-        if (daysElement) daysElement.textContent = '0';
-        if (hoursElement) hoursElement.textContent = '0';
-        if (minutesElement) minutesElement.textContent = '0';
-        if (secondsElement) secondsElement.textContent = '0';
-    }
+    if (daysElement) daysElement.textContent = days > 0 ? days : 0;
+    if (hoursElement) hoursElement.textContent = hours > 0 ? hours : 0;
+    if (minutesElement) minutesElement.textContent = minutes > 0 ? minutes : 0;
+    if (secondsElement) secondsElement.textContent = seconds > 0 ? seconds : 0;
 }
 
-// Uruchom countdown od razu
 updateCountdown();
-
-// Aktualizuj co sekundę
 setInterval(updateCountdown, 1000);
 
 // ========================================
@@ -46,45 +32,43 @@ const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
 const navLinks = document.querySelectorAll('.nav-link');
 
-hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-
-    // Animate hamburger icon
-    const spans = hamburger.querySelectorAll('span');
-    if (navMenu.classList.contains('active')) {
-        spans[0].style.transform = 'rotate(45deg) translateY(10px)';
-        spans[1].style.opacity = '0';
-        spans[2].style.transform = 'rotate(-45deg) translateY(-10px)';
-    } else {
-        spans[0].style.transform = 'none';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = 'none';
-    }
-});
-
-// Close menu when clicking on a link
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
+if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
         const spans = hamburger.querySelectorAll('span');
-        spans[0].style.transform = 'none';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = 'none';
+        if (navMenu.classList.contains('active')) {
+            spans[0].style.transform = 'rotate(45deg) translateY(10px)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'rotate(-45deg) translateY(-10px)';
+        } else {
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+        }
     });
-});
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            const spans = hamburger.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+        });
+    });
+}
 
 // ========================================
 // Active Navigation Link on Scroll
 // ========================================
-const sections = document.querySelectorAll('section[id], footer[id], div.split-column[id]');
+const sections = document.querySelectorAll('section[id], footer[id]');
 
 function setActiveNav() {
     const scrollY = window.pageYOffset;
-    const headerOffset = 100;
+    const headerOffset = 120;
 
     sections.forEach(section => {
         const sectionHeight = section.offsetHeight;
-        // Oblicz pozycję absolutną względem dokumentu
         const sectionTop = section.getBoundingClientRect().top + window.pageYOffset - headerOffset;
         const sectionId = section.getAttribute('id');
 
@@ -102,22 +86,21 @@ function setActiveNav() {
 window.addEventListener('scroll', setActiveNav);
 
 // ========================================
-// Navbar Background on Scroll
+// Navbar Shadow on Scroll
 // ========================================
 const navbar = document.querySelector('.navbar');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.1)';
-    } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
-    }
-});
+if (navbar) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+            navbar.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.1)';
+        } else {
+            navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+        }
+    });
+}
 
 // ========================================
-// Smooth Scroll Polyfill for older browsers
+// Smooth Scroll for Anchors
 // ========================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -137,134 +120,101 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 behavior: 'smooth'
             });
 
-            // Zamknij menu mobilne po kliknięciu
-            navMenu.classList.remove('active');
-            const spans = hamburger.querySelectorAll('span');
-            spans.forEach(span => span.style.transform = 'none');
-            spans[1].style.opacity = '1';
+            if (navMenu) {
+                navMenu.classList.remove('active');
+                if (hamburger) {
+                    const spans = hamburger.querySelectorAll('span');
+                    spans.forEach(span => span.style.transform = 'none');
+                    if (spans[1]) spans[1].style.opacity = '1';
+                }
+            }
         }
     });
 });
 
 // ========================================
-// Intersection Observer for Fade-in Animations
+// Photo Carousel Controls (Auto-Slide Movement & Manual Navigation)
 // ========================================
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
+const galleryCarousel = document.getElementById('galleryCarousel');
+const carouselPrev = document.getElementById('carouselPrev');
+const carouselNext = document.getElementById('carouselNext');
 
-const fadeInObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '0';
-            entry.target.style.transform = 'translateY(30px)';
-            entry.target.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+if (galleryCarousel) {
+    const slideStep = 340;
+    let autoSlideTimer = null;
 
-            setTimeout(() => {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }, 100);
-
-            fadeInObserver.unobserve(entry.target);
+    const scrollNext = () => {
+        const maxScrollLeft = galleryCarousel.scrollWidth - galleryCarousel.clientWidth;
+        if (galleryCarousel.scrollLeft >= maxScrollLeft - 15) {
+            galleryCarousel.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            galleryCarousel.scrollBy({ left: slideStep, behavior: 'smooth' });
         }
-    });
-}, observerOptions);
+    };
 
-// Observe all detail cards
-document.querySelectorAll('.detail-card').forEach(card => {
-    fadeInObserver.observe(card);
-});
+    const scrollPrev = () => {
+        if (galleryCarousel.scrollLeft <= 15) {
+            const maxScrollLeft = galleryCarousel.scrollWidth - galleryCarousel.clientWidth;
+            galleryCarousel.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
+        } else {
+            galleryCarousel.scrollBy({ left: -slideStep, behavior: 'smooth' });
+        }
+    };
 
-// Observe about section
-const aboutText = document.querySelector('.about-text');
-if (aboutText) {
-    fadeInObserver.observe(aboutText);
-}
+    const startAutoSlide = () => {
+        stopAutoSlide();
+        autoSlideTimer = setInterval(scrollNext, 2500);
+    };
 
+    const stopAutoSlide = () => {
+        if (autoSlideTimer) {
+            clearInterval(autoSlideTimer);
+            autoSlideTimer = null;
+        }
+    };
 
-
-
-
-// ========================================
-// Parallax Effect for Hero Section
-// ========================================
-const heroBackground = document.querySelector('.hero-background');
-
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const parallaxSpeed = 0.5;
-
-    if (heroBackground && scrolled < window.innerHeight) {
-        heroBackground.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+    if (carouselPrev && carouselNext) {
+        carouselPrev.addEventListener('click', () => {
+            scrollPrev();
+            startAutoSlide();
+        });
+        carouselNext.addEventListener('click', () => {
+            scrollNext();
+            startAutoSlide();
+        });
     }
-});
 
+    // Pause auto-sliding when user hovers or touches carousel
+    galleryCarousel.addEventListener('mouseenter', stopAutoSlide);
+    galleryCarousel.addEventListener('mouseleave', startAutoSlide);
+    galleryCarousel.addEventListener('touchstart', stopAutoSlide, { passive: true });
+    galleryCarousel.addEventListener('touchend', startAutoSlide, { passive: true });
 
-
-// ========================================
-// Add interactive glow effect to detail cards
-// ========================================
-const detailCards = document.querySelectorAll('.detail-card');
-
-detailCards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
-    });
-});
-
-// ========================================
-// Console Welcome Message
-// ========================================
-console.log('%cSlavic Integration Weekend', 'color: #2e3192; font-size: 24px; font-weight: bold;');
-console.log('%cConnecting cultures, building bridges 🌍', 'color: #ec008c; font-size: 14px;');
-
-// ========================================
-// Page Load Animation
-// ========================================
-window.addEventListener('load', () => {
-    document.body.style.opacity = '0';
-    setTimeout(() => {
-        document.body.style.transition = 'opacity 0.5s ease';
-        document.body.style.opacity = '1';
-    }, 100);
-});
-
-
-
-// ========================================
-// Folders & Lightbox
-// ========================================
-function toggleFolder(folder) {
-    // Zamknij inne foldery (opcjonalnie, jeśli chcemy tylko jeden otwarty)
-    // const folders = document.querySelectorAll('.folder');
-    // folders.forEach(f => {
-    //    if (f !== folder) f.classList.remove('open');
-    // });
-
-    folder.classList.toggle('open');
+    // Start auto-slide motion
+    startAutoSlide();
 }
 
+// ========================================
+// Lightbox Modal
+// ========================================
 function openLightbox(src) {
     const lightbox = document.getElementById('lightbox');
     const img = document.getElementById('lightbox-img');
-    img.src = src;
-    lightbox.style.display = 'flex';
+    if (lightbox && img) {
+        img.src = src;
+        lightbox.style.display = 'flex';
+    }
 }
 
 function closeLightbox() {
     const lightbox = document.getElementById('lightbox');
-    lightbox.style.display = 'none';
+    if (lightbox) {
+        lightbox.style.display = 'none';
+    }
 }
 
-// Close lightbox on Escape key
 document.addEventListener('keydown', function (event) {
-    if (event.key === "Escape") {
+    if (event.key === 'Escape') {
         closeLightbox();
     }
 });
@@ -277,32 +227,38 @@ const faqItems = document.querySelectorAll('.faq-item');
 faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
     const answer = item.querySelector('.faq-answer');
-    
-    question.addEventListener('click', () => {
-        const isActive = item.classList.contains('active');
-        
-        // Opcjonalnie: Zamknij inne otwarte pytania (Accordion behavior)
-        /*
-        faqItems.forEach(otherItem => {
-            if (otherItem !== item && otherItem.classList.contains('active')) {
-                otherItem.classList.remove('active');
-                otherItem.querySelector('.faq-answer').style.maxHeight = null;
+
+    if (question && answer) {
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+
+            item.classList.toggle('active');
+
+            if (item.classList.contains('active')) {
+                answer.style.maxHeight = answer.scrollHeight + 40 + 'px';
+                answer.style.opacity = '1';
             }
         });
-        */
+    }
+});
 
-        // Toggle active class
-        item.classList.toggle('active');
-        
-        // Toggle max-height for smooth animation
-        if (item.classList.contains('active')) {
-            answer.style.maxHeight = answer.scrollHeight + 40 + "px"; // +40 for padding
-            answer.style.paddingBottom = "1.5rem"; // Restore padding
-            answer.style.opacity = "1";
-        } else {
-            answer.style.maxHeight = null;
-            answer.style.paddingBottom = "0"; // Remove padding to avoid gap
-            answer.style.opacity = "0";
-        }
+// ========================================
+// Expandable Partner Tiles
+// ========================================
+const partnerExpandCards = document.querySelectorAll('.partner-expand-card');
+
+partnerExpandCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+        if (e.target.tagName.toLowerCase() === 'a' || e.target.closest('a')) return;
+
+        const isActive = card.classList.contains('active');
+
+        partnerExpandCards.forEach(c => {
+            if (c !== card) c.classList.remove('active');
+        });
+
+        card.classList.toggle('active', !isActive);
     });
 });
+
+console.log('%cWild West Integration Weekend', 'color: #2e3192; font-size: 22px; font-weight: bold;');
